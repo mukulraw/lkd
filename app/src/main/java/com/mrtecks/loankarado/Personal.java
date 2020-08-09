@@ -47,15 +47,14 @@ public class Personal extends AppCompatActivity {
         });
 
 
-        PagerAdapter adapter = new PagerAdapter(getSupportFragmentManager() , FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
+        PagerAdapter adapter = new PagerAdapter(getSupportFragmentManager(), FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
         pager.setAdapter(adapter);
         tabs.setupWithViewPager(pager);
 
 
     }
 
-    class PagerAdapter extends FragmentStatePagerAdapter
-    {
+    static class PagerAdapter extends FragmentStatePagerAdapter {
         String[] titles = {
                 "Personal",
                 "Professional"
@@ -74,12 +73,9 @@ public class Personal extends AppCompatActivity {
         @NonNull
         @Override
         public Fragment getItem(int position) {
-            if (position == 0)
-            {
+            if (position == 0) {
                 return new personal();
-            }
-            else
-            {
+            } else {
                 return new professional();
             }
         }
@@ -90,25 +86,23 @@ public class Personal extends AppCompatActivity {
         }
     }
 
-    public static class personal extends Fragment
-    {
+    public static class personal extends Fragment {
 
         @Nullable
         @Override
         public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-            View view = inflater.inflate(R.layout.personal , container , false);
+            View view = inflater.inflate(R.layout.personal, container, false);
 
             return view;
         }
     }
 
-    public static class professional extends Fragment
-    {
+    public static class professional extends Fragment {
 
         @Nullable
         @Override
         public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-            View view = inflater.inflate(R.layout.activity_professional , container , false);
+            View view = inflater.inflate(R.layout.activity_professional, container, false);
 
             return view;
         }
