@@ -1,3 +1,41 @@
 <resources>
     <string name="app_name">LoanKaraDo</string>
+
+    <string-array name="gender">
+        <item>Male</item>
+        <item>Female</item>
+        <item>Others</item>
+    </string-array>
+
+    <string-array name="residence_type">
+        <item>Rented</item>
+        <item>Self owned</item>
+        <item>Family owned</item>
+    </string-array>
+
+    <string-array name="city">
+        <item>Noida</item>
+        <item>Greater Noida</item>
+        <item>Ghaziabad</item>
+        <item>Delhi</item>
+        <item>Faridabad</item>
+        <item>Gurugram</item>
+    </string-array>
+
+    <string-array name="company_type">
+        <item>Government</item>
+        <item>Private Limited</item>
+        <item>Proprietor</item>
+        <item>Partnership</item>
+        <item>LLP</item>
+    </string-array>
+
+    <string-array name="employement">
+        <item>Salaried</item>
+    </string-array>
+
+    <string-array name="salary_mode">
+        <item>In Account</item>
+    </string-array>
+
 </resources>

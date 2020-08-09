@@ -74,7 +74,14 @@ public class Personal extends AppCompatActivity {
         @NonNull
         @Override
         public Fragment getItem(int position) {
-            return new personal();
+            if (position == 0)
+            {
+                return new personal();
+            }
+            else
+            {
+                return new professional();
+            }
         }
 
         @Override
@@ -90,6 +97,18 @@ public class Personal extends AppCompatActivity {
         @Override
         public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
             View view = inflater.inflate(R.layout.personal , container , false);
+
+            return view;
+        }
+    }
+
+    public static class professional extends Fragment
+    {
+
+        @Nullable
+        @Override
+        public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+            View view = inflater.inflate(R.layout.activity_professional , container , false);
 
             return view;
         }

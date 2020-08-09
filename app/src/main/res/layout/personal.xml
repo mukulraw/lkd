@@ -104,7 +104,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Customer's Email Id"
+            android:text="Gender"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
@@ -123,6 +123,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
+                android:entries="@array/gender"
                 android:id="@+id/gender"
                 />
 
@@ -152,6 +153,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:id="@+id/residence"
+                android:entries="@array/residence_type"
                 />
 
         </RelativeLayout>
