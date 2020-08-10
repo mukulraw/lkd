@@ -37,7 +37,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
 
-public class HomeSalaried extends AppCompatActivity {
+public class PropertySalaried extends AppCompatActivity {
 
     Toolbar toolbar;
     static ViewPager pager;
@@ -46,8 +46,7 @@ public class HomeSalaried extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home_salaried);
-
+        setContentView(R.layout.activity_property_salaried);
         toolbar = findViewById(R.id.toolbar);
         pager = findViewById(R.id.pager);
         tabs = findViewById(R.id.tabLayout);
@@ -55,7 +54,7 @@ public class HomeSalaried extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         toolbar.setTitleTextColor(Color.WHITE);
-        toolbar.setTitle("Home Loan (Salaried Employee)");
+        toolbar.setTitle("Loan Against Property (Salaried Employee)");
         toolbar.setNavigationIcon(R.drawable.ic_back);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,6 +68,7 @@ public class HomeSalaried extends AppCompatActivity {
         PagerAdapter adapter = new PagerAdapter(getSupportFragmentManager(), FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
         pager.setAdapter(adapter);
         tabs.setupWithViewPager(pager);
+
 
     }
 
@@ -354,7 +354,7 @@ public class HomeSalaried extends AppCompatActivity {
 
                     AllApiIneterface cr = retrofit.create(AllApiIneterface.class);
 
-                    Call<applyBean> call = cr.apply_home_salaried(
+                    Call<applyBean> call = cr.apply_property_salaried(
                             SharePreferenceUtils.getInstance().getString("mobile"),
                             SharePreferenceUtils.getInstance().getString("name"),
                             SharePreferenceUtils.getInstance().getString("dob"),

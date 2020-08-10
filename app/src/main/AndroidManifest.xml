@@ -13,7 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".HomeSalaried"></activity>
+        <activity android:name=".PropertySalaried"></activity>
+        <activity android:name=".HomeSalaried" />
         <activity android:name=".Business" />
         <activity
             android:name=".Personal"
