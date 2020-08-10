@@ -119,4 +119,40 @@ public interface AllApiIneterface {
             @Part("loan_amount_required") String loan_amount_required
     );
 
+
+    @Multipart
+    @POST("api/apply_home_self.php")
+    Call<applyBean> apply_home_self(
+            @Part("mobile") String mobile,
+            @Part("name") String name,
+            @Part("dob") String dob,
+            @Part("email") String email,
+            @Part("gender") String gender,
+            @Part("residence_type") String residence_type,
+            @Part("residence_address") String residence_address,
+            @Part("pan") String pan,
+            @Part("city") String city,
+            @Part("company_type") String company_type,
+            @Part("company_name") String company_name,
+            @Part("registration_type") String registration_type,
+            @Part("office_type") String office_type,
+            @Part("office_address") String office_address,
+            @Part("registration_age") String registration_age,
+            @Part("yearly_sales") String yearly_sales,
+            @Part("income_in_itr") String income_in_itr,
+            @Part("oldest_irt_date") String oldest_irt_date,
+            @Part("current_account") String current_account,
+            @Part("loan_details") String loan_details,
+            @Part("loan_anount") String loan_anount,
+            @Part("message") String message,
+            @Part("property_sale") String property_sale,
+            @Part("property_mode") String property_mode,
+            @Part("property_documents") String property_documents,
+            @Part("how_to") String how_to,
+            @Part("property_type") String property_type,
+            @Part("property_category") String property_category,
+            @Part("value") String value,
+            @Part("loan_amount_required") String loan_amount_required
+    );
+
 }

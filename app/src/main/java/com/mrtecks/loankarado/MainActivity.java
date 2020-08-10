@@ -74,6 +74,17 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        homeself.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(MainActivity.this , HomeSelf.class);
+                startActivity(intent);
+
+            }
+        });
+
+
         propertysalaried.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

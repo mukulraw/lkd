@@ -310,6 +310,9 @@ public class Personal extends AppCompatActivity {
                                             public void onResponse(Call<applyBean> call, Response<applyBean> response) {
 
                                                 if (response.body().getStatus().equals("1")) {
+
+                                                    SharePreferenceUtils.getInstance().deletePref();
+
                                                     Toast.makeText(getContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
                                                     getActivity().finish();
                                                 } else {

@@ -37,18 +37,16 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
 
-public class Business extends AppCompatActivity {
+public class HomeSelf extends AppCompatActivity {
 
     Toolbar toolbar;
     static ViewPager pager;
     TabLayout tabs;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_business);
-
+        setContentView(R.layout.activity_home_self);
         toolbar = findViewById(R.id.toolbar);
         pager = findViewById(R.id.pager);
         tabs = findViewById(R.id.tabLayout);
@@ -56,7 +54,7 @@ public class Business extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         toolbar.setTitleTextColor(Color.WHITE);
-        toolbar.setTitle("Business Loan");
+        toolbar.setTitle("Home Loan (Self Employed)");
         toolbar.setNavigationIcon(R.drawable.ic_back);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,13 +69,15 @@ public class Business extends AppCompatActivity {
         pager.setAdapter(adapter);
         tabs.setupWithViewPager(pager);
 
+
     }
 
     static class PagerAdapter extends FragmentStatePagerAdapter {
         String[] titles = {
                 "Personal",
                 "Professional",
-                "Financial"
+                "Financial",
+                "Property"
         };
 
         @Nullable
@@ -97,14 +97,16 @@ public class Business extends AppCompatActivity {
                 return new personal();
             } else if (position == 1) {
                 return new professional();
-            } else {
+            } else if (position == 2) {
                 return new financial();
+            } else {
+                return new property();
             }
         }
 
         @Override
         public int getCount() {
-            return 3;
+            return 4;
         }
     }
 
@@ -322,73 +324,15 @@ public class Business extends AppCompatActivity {
                             if (o.length() > 0) {
                                 if (l.length() > 0) {
 
-                                    progress.setVisibility(View.VISIBLE);
+                                    SharePreferenceUtils.getInstance().saveString("yearly_saless", y);
+                                    SharePreferenceUtils.getInstance().saveString("income_in_itr", i);
+                                    SharePreferenceUtils.getInstance().saveString("oldest_irt_date", o);
+                                    SharePreferenceUtils.getInstance().saveString("current_account", current_account.getSelectedItem().toString());
+                                    SharePreferenceUtils.getInstance().saveString("loan_details", l);
+                                    SharePreferenceUtils.getInstance().saveString("loan_amount", loan_amount.getText().toString());
+                                    SharePreferenceUtils.getInstance().saveString("message", message.getText().toString());
 
-                                    Bean b = (Bean) getActivity().getApplicationContext();
-
-                                    HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
-                                    logging.level(HttpLoggingInterceptor.Level.HEADERS);
-                                    logging.level(HttpLoggingInterceptor.Level.BODY);
-
-                                    OkHttpClient client = new OkHttpClient.Builder().writeTimeout(1000, TimeUnit.SECONDS).readTimeout(1000, TimeUnit.SECONDS).connectTimeout(1000, TimeUnit.SECONDS).addInterceptor(logging).build();
-
-                                    Retrofit retrofit = new Retrofit.Builder()
-                                            .baseUrl(b.baseurl)
-                                            .client(client)
-                                            .addConverterFactory(ScalarsConverterFactory.create())
-                                            .addConverterFactory(GsonConverterFactory.create())
-                                            .build();
-
-                                    AllApiIneterface cr = retrofit.create(AllApiIneterface.class);
-
-                                    Call<applyBean> call = cr.apply_business(
-                                            SharePreferenceUtils.getInstance().getString("mobile"),
-                                            SharePreferenceUtils.getInstance().getString("name"),
-                                            SharePreferenceUtils.getInstance().getString("dob"),
-                                            SharePreferenceUtils.getInstance().getString("email"),
-                                            SharePreferenceUtils.getInstance().getString("gender"),
-                                            SharePreferenceUtils.getInstance().getString("residence_type"),
-                                            SharePreferenceUtils.getInstance().getString("residence_address"),
-                                            SharePreferenceUtils.getInstance().getString("pan"),
-                                            SharePreferenceUtils.getInstance().getString("city"),
-                                            SharePreferenceUtils.getInstance().getString("company_type"),
-                                            SharePreferenceUtils.getInstance().getString("company_name"),
-                                            SharePreferenceUtils.getInstance().getString("registration_type"),
-                                            SharePreferenceUtils.getInstance().getString("office_type"),
-                                            SharePreferenceUtils.getInstance().getString("office_address"),
-                                            SharePreferenceUtils.getInstance().getString("registration_age"),
-                                            y,
-                                            i,
-                                            o,
-                                            current_account.getSelectedItem().toString(),
-                                            l,
-                                            loan_amount.getText().toString(),
-                                            message.getText().toString()
-                                    );
-
-                                    call.enqueue(new Callback<applyBean>() {
-                                        @Override
-                                        public void onResponse(Call<applyBean> call, Response<applyBean> response) {
-
-                                            if (response.body().getStatus().equals("1")) {
-
-                                                SharePreferenceUtils.getInstance().deletePref();
-
-                                                Toast.makeText(getContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
-                                                getActivity().finish();
-                                            } else {
-                                                Toast.makeText(getContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
-                                            }
-
-                                            progress.setVisibility(View.GONE);
-
-                                        }
-
-                                        @Override
-                                        public void onFailure(Call<applyBean> call, Throwable t) {
-                                            progress.setVisibility(View.GONE);
-                                        }
-                                    });
+                                    pager.setCurrentItem(3);
 
                                 }
                             } else {
@@ -408,5 +352,124 @@ public class Business extends AppCompatActivity {
         }
     }
 
+
+    public static class property extends Fragment {
+
+        Spinner property_sale;
+        Spinner property_mode;
+        Spinner property_documents;
+        Spinner how_to;
+        Spinner property_type;
+        Spinner property_category;
+        EditText value;
+        Spinner loan_amount_required;
+        Button next;
+        ProgressBar progress;
+
+        @Nullable
+        @Override
+        public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+            View view = inflater.inflate(R.layout.property, container, false);
+
+            property_sale = view.findViewById(R.id.property_sale);
+            property_mode = view.findViewById(R.id.property_mode);
+            property_documents = view.findViewById(R.id.property_documents);
+            how_to = view.findViewById(R.id.how_to);
+            property_type = view.findViewById(R.id.property_type);
+            property_category = view.findViewById(R.id.property_category);
+            value = view.findViewById(R.id.value);
+            loan_amount_required = view.findViewById(R.id.loan_amount_required);
+            next = view.findViewById(R.id.next);
+            progress = view.findViewById(R.id.progress);
+
+
+            next.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+
+                    progress.setVisibility(View.VISIBLE);
+
+                    Bean b = (Bean) getActivity().getApplicationContext();
+
+                    HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
+                    logging.level(HttpLoggingInterceptor.Level.HEADERS);
+                    logging.level(HttpLoggingInterceptor.Level.BODY);
+
+                    OkHttpClient client = new OkHttpClient.Builder().writeTimeout(1000, TimeUnit.SECONDS).readTimeout(1000, TimeUnit.SECONDS).connectTimeout(1000, TimeUnit.SECONDS).addInterceptor(logging).build();
+
+                    Retrofit retrofit = new Retrofit.Builder()
+                            .baseUrl(b.baseurl)
+                            .client(client)
+                            .addConverterFactory(ScalarsConverterFactory.create())
+                            .addConverterFactory(GsonConverterFactory.create())
+                            .build();
+
+                    AllApiIneterface cr = retrofit.create(AllApiIneterface.class);
+
+                    Call<applyBean> call = cr.apply_home_self(
+                            SharePreferenceUtils.getInstance().getString("mobile"),
+                            SharePreferenceUtils.getInstance().getString("name"),
+                            SharePreferenceUtils.getInstance().getString("dob"),
+                            SharePreferenceUtils.getInstance().getString("email"),
+                            SharePreferenceUtils.getInstance().getString("gender"),
+                            SharePreferenceUtils.getInstance().getString("residence_type"),
+                            SharePreferenceUtils.getInstance().getString("residence_address"),
+                            SharePreferenceUtils.getInstance().getString("pan"),
+                            SharePreferenceUtils.getInstance().getString("city"),
+                            SharePreferenceUtils.getInstance().getString("company_type"),
+                            SharePreferenceUtils.getInstance().getString("company_name"),
+                            SharePreferenceUtils.getInstance().getString("registration_type"),
+                            SharePreferenceUtils.getInstance().getString("office_type"),
+                            SharePreferenceUtils.getInstance().getString("office_address"),
+                            SharePreferenceUtils.getInstance().getString("registration_age"),
+                            SharePreferenceUtils.getInstance().getString("yearly_saless"),
+                            SharePreferenceUtils.getInstance().getString("income_in_itr"),
+                            SharePreferenceUtils.getInstance().getString("oldest_irt_date"),
+                            SharePreferenceUtils.getInstance().getString("current_account"),
+                            SharePreferenceUtils.getInstance().getString("loan_details"),
+                            SharePreferenceUtils.getInstance().getString("loan_amount"),
+                            SharePreferenceUtils.getInstance().getString("message"),
+                            property_sale.getSelectedItem().toString(),
+                            property_mode.getSelectedItem().toString(),
+                            property_documents.getSelectedItem().toString(),
+                            how_to.getSelectedItem().toString(),
+                            property_type.getSelectedItem().toString(),
+                            property_category.getSelectedItem().toString(),
+                            value.getText().toString(),
+                            loan_amount_required.getSelectedItem().toString()
+                    );
+
+                    call.enqueue(new Callback<applyBean>() {
+                        @Override
+                        public void onResponse(Call<applyBean> call, Response<applyBean> response) {
+
+                            if (response.body().getStatus().equals("1")) {
+
+                                SharePreferenceUtils.getInstance().deletePref();
+
+                                Toast.makeText(getContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                                getActivity().finish();
+                            } else {
+                                Toast.makeText(getContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                            }
+
+                            progress.setVisibility(View.GONE);
+
+                        }
+
+                        @Override
+                        public void onFailure(Call<applyBean> call, Throwable t) {
+                            progress.setVisibility(View.GONE);
+                        }
+                    });
+
+
+                }
+            });
+
+            return view;
+        }
+    }
 
 }
