@@ -1,6 +1,7 @@
 package com.mrtecks.loankarado;
 
 import retrofit2.Call;
+import retrofit2.http.GET;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
@@ -189,5 +190,8 @@ public interface AllApiIneterface {
             @Part("value") String value,
             @Part("loan_amount_required") String loan_amount_required
     );
+
+    @GET("api/getBanner.php")
+    Call<bannerBean> getBanner();
 
 }
