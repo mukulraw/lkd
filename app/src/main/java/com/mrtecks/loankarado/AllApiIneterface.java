@@ -8,8 +8,8 @@ import retrofit2.http.Part;
 public interface AllApiIneterface {
 
     @Multipart
-    @POST("gbuysmart/api/buyVouchers.php")
-    Call<applyBean> buyVouchers(
+    @POST("api/apply_personal.php")
+    Call<applyBean> apply_personal(
             @Part("mobile") String mobile,
             @Part("name") String name,
             @Part("dob") String dob,
