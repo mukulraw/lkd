@@ -54,11 +54,57 @@
 
     <string-array name="salary_mode">
         <item>In Account</item>
+        <item>In hand</item>
+        <item>By cheque</item>
     </string-array>
 
     <string-array name="current_account">
         <item>Yes</item>
         <item>No</item>
+    </string-array>
+
+    <string-array name="property_sale">
+        <item>Self sale</item>
+        <item>Builder sale</item>
+        <item>Dealer sale</item>
+    </string-array>
+
+    <string-array name="property_mode">
+        <item>Free hold Area</item>
+        <item>Government approved area</item>
+        <item>Lal Dora area</item>
+        <item>Regularize area</item>
+    </string-array>
+
+    <string-array name="property_documents">
+        <item>Khasra khatuni</item>
+        <item>General power attony</item>
+        <item>Sale deed</item>
+        <item>Gifted property</item>
+    </string-array>
+
+    <string-array name="how_to">
+        <item>Sale deed</item>
+    </string-array>
+
+    <string-array name="property_type">
+        <item>Residential</item>
+        <item>Commercial</item>
+        <item>Land</item>
+    </string-array>
+
+    <string-array name="property_category">
+        <item>Home</item>
+        <item>Shop or office</item>
+        <item>Plot</item>
+        <item>Flat</item>
+        <item>Khothi</item>
+        <item>Villa</item>
+    </string-array>
+
+    <string-array name="loan_amount_required">
+        <item>More than 80%</item>
+        <item>Less than 80%</item>
     </string-array>
 
 </resources>

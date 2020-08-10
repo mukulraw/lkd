@@ -55,7 +55,7 @@ public class HomeSalaried extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         toolbar.setTitleTextColor(Color.WHITE);
-        toolbar.setTitle("Business Loan");
+        toolbar.setTitle("Home Loan (Salaried Employee)");
         toolbar.setNavigationIcon(R.drawable.ic_back);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -97,7 +97,7 @@ public class HomeSalaried extends AppCompatActivity {
             } else if (position == 1) {
                 return new professional();
             } else {
-                return new financial();
+                return new property();
             }
         }
 
@@ -300,30 +300,32 @@ public class HomeSalaried extends AppCompatActivity {
     }
 
 
-    public static class financial extends Fragment {
+    public static class property extends Fragment {
 
-        EditText yearly_saless;
-        EditText income_in_itr;
-        EditText oldest_irt_date;
-        Spinner current_account;
-        EditText loan_details;
-        EditText loan_amount;
-        EditText message;
+        Spinner property_sale;
+        Spinner property_mode;
+        Spinner property_documents;
+        Spinner how_to;
+        Spinner property_type;
+        Spinner property_category;
+        EditText value;
+        Spinner loan_amount_required;
         Button next;
         ProgressBar progress;
 
         @Nullable
         @Override
         public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-            View view = inflater.inflate(R.layout.financial, container, false);
+            View view = inflater.inflate(R.layout.property, container, false);
 
-            yearly_saless = view.findViewById(R.id.yearly_saless);
-            income_in_itr = view.findViewById(R.id.income_in_itr);
-            oldest_irt_date = view.findViewById(R.id.oldest_irt_date);
-            current_account = view.findViewById(R.id.current_account);
-            loan_details = view.findViewById(R.id.loan_details);
-            loan_amount = view.findViewById(R.id.loan_amount);
-            message = view.findViewById(R.id.message);
+            property_sale = view.findViewById(R.id.property_sale);
+            property_mode = view.findViewById(R.id.property_mode);
+            property_documents = view.findViewById(R.id.property_documents);
+            how_to = view.findViewById(R.id.how_to);
+            property_type = view.findViewById(R.id.property_type);
+            property_category = view.findViewById(R.id.property_category);
+            value = view.findViewById(R.id.value);
+            loan_amount_required = view.findViewById(R.id.loan_amount_required);
             next = view.findViewById(R.id.next);
             progress = view.findViewById(R.id.progress);
 
@@ -332,97 +334,82 @@ public class HomeSalaried extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
 
-                    String y = yearly_saless.getText().toString();
-                    String i = income_in_itr.getText().toString();
-                    String o = oldest_irt_date.getText().toString();
-                    String l = loan_details.getText().toString();
 
-                    if (y.length() > 0) {
-                        if (i.length() > 0) {
-                            if (o.length() > 0) {
-                                if (l.length() > 0) {
+                    progress.setVisibility(View.VISIBLE);
 
-                                    progress.setVisibility(View.VISIBLE);
+                    Bean b = (Bean) getActivity().getApplicationContext();
 
-                                    Bean b = (Bean) getActivity().getApplicationContext();
+                    HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
+                    logging.level(HttpLoggingInterceptor.Level.HEADERS);
+                    logging.level(HttpLoggingInterceptor.Level.BODY);
 
-                                    HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
-                                    logging.level(HttpLoggingInterceptor.Level.HEADERS);
-                                    logging.level(HttpLoggingInterceptor.Level.BODY);
+                    OkHttpClient client = new OkHttpClient.Builder().writeTimeout(1000, TimeUnit.SECONDS).readTimeout(1000, TimeUnit.SECONDS).connectTimeout(1000, TimeUnit.SECONDS).addInterceptor(logging).build();
 
-                                    OkHttpClient client = new OkHttpClient.Builder().writeTimeout(1000, TimeUnit.SECONDS).readTimeout(1000, TimeUnit.SECONDS).connectTimeout(1000, TimeUnit.SECONDS).addInterceptor(logging).build();
+                    Retrofit retrofit = new Retrofit.Builder()
+                            .baseUrl(b.baseurl)
+                            .client(client)
+                            .addConverterFactory(ScalarsConverterFactory.create())
+                            .addConverterFactory(GsonConverterFactory.create())
+                            .build();
 
-                                    Retrofit retrofit = new Retrofit.Builder()
-                                            .baseUrl(b.baseurl)
-                                            .client(client)
-                                            .addConverterFactory(ScalarsConverterFactory.create())
-                                            .addConverterFactory(GsonConverterFactory.create())
-                                            .build();
+                    AllApiIneterface cr = retrofit.create(AllApiIneterface.class);
 
-                                    AllApiIneterface cr = retrofit.create(AllApiIneterface.class);
+                    Call<applyBean> call = cr.apply_home_salaried(
+                            SharePreferenceUtils.getInstance().getString("mobile"),
+                            SharePreferenceUtils.getInstance().getString("name"),
+                            SharePreferenceUtils.getInstance().getString("dob"),
+                            SharePreferenceUtils.getInstance().getString("email"),
+                            SharePreferenceUtils.getInstance().getString("gender"),
+                            SharePreferenceUtils.getInstance().getString("residence_type"),
+                            SharePreferenceUtils.getInstance().getString("residence_address"),
+                            SharePreferenceUtils.getInstance().getString("pan"),
+                            SharePreferenceUtils.getInstance().getString("city"),
+                            SharePreferenceUtils.getInstance().getString("company_type"),
+                            SharePreferenceUtils.getInstance().getString("employment_type"),
+                            SharePreferenceUtils.getInstance().getString("company_name"),
+                            SharePreferenceUtils.getInstance().getString("company_address"),
+                            SharePreferenceUtils.getInstance().getString("salary_mode"),
+                            SharePreferenceUtils.getInstance().getString("monthly_salary"),
+                            SharePreferenceUtils.getInstance().getString("loan_details"),
+                            SharePreferenceUtils.getInstance().getString("loan_amount"),
+                            SharePreferenceUtils.getInstance().getString("message"),
+                            property_sale.getSelectedItem().toString(),
+                            property_mode.getSelectedItem().toString(),
+                            property_documents.getSelectedItem().toString(),
+                            how_to.getSelectedItem().toString(),
+                            property_type.getSelectedItem().toString(),
+                            property_category.getSelectedItem().toString(),
+                            value.getText().toString(),
+                            loan_amount_required.getSelectedItem().toString()
+                    );
 
-                                    Call<applyBean> call = cr.apply_business(
-                                            SharePreferenceUtils.getInstance().getString("mobile"),
-                                            SharePreferenceUtils.getInstance().getString("name"),
-                                            SharePreferenceUtils.getInstance().getString("dob"),
-                                            SharePreferenceUtils.getInstance().getString("email"),
-                                            SharePreferenceUtils.getInstance().getString("gender"),
-                                            SharePreferenceUtils.getInstance().getString("residence_type"),
-                                            SharePreferenceUtils.getInstance().getString("residence_address"),
-                                            SharePreferenceUtils.getInstance().getString("pan"),
-                                            SharePreferenceUtils.getInstance().getString("city"),
-                                            SharePreferenceUtils.getInstance().getString("company_type"),
-                                            SharePreferenceUtils.getInstance().getString("company_name"),
-                                            SharePreferenceUtils.getInstance().getString("registration_type"),
-                                            SharePreferenceUtils.getInstance().getString("office_type"),
-                                            SharePreferenceUtils.getInstance().getString("office_address"),
-                                            SharePreferenceUtils.getInstance().getString("registration_age"),
-                                            y,
-                                            i,
-                                            o,
-                                            current_account.getSelectedItem().toString(),
-                                            l,
-                                            loan_amount.getText().toString(),
-                                            message.getText().toString()
-                                    );
+                    call.enqueue(new Callback<applyBean>() {
+                        @Override
+                        public void onResponse(Call<applyBean> call, Response<applyBean> response) {
 
-                                    call.enqueue(new Callback<applyBean>() {
-                                        @Override
-                                        public void onResponse(Call<applyBean> call, Response<applyBean> response) {
-
-                                            if (response.body().getStatus().equals("1")) {
-                                                Toast.makeText(getContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
-                                                getActivity().finish();
-                                            } else {
-                                                Toast.makeText(getContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
-                                            }
-
-                                            progress.setVisibility(View.GONE);
-
-                                        }
-
-                                        @Override
-                                        public void onFailure(Call<applyBean> call, Throwable t) {
-                                            progress.setVisibility(View.GONE);
-                                        }
-                                    });
-
-                                }
+                            if (response.body().getStatus().equals("1")) {
+                                Toast.makeText(getContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                                getActivity().finish();
                             } else {
-                                Toast.makeText(getContext(), "Invalid office address", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
                             }
-                        } else {
-                            Toast.makeText(getContext(), "Invalid company name", Toast.LENGTH_SHORT).show();
-                        }
-                    } else {
-                        Toast.makeText(getContext(), "Invalid PAN Number", Toast.LENGTH_SHORT).show();
-                    }
 
-                }
-            });
+                            progress.setVisibility(View.GONE);
+
+                        }
+
+                        @Override
+                        public void onFailure(Call<applyBean> call, Throwable t) {
+                            progress.setVisibility(View.GONE);
+                        }
+                    });
+
+
+            }
+        });
 
             return view;
-        }
     }
+}
 
 }

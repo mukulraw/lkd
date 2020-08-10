@@ -57,4 +57,35 @@ public interface AllApiIneterface {
             @Part("message") String message
     );
 
+    @Multipart
+    @POST("api/apply_home_salaried.php")
+    Call<applyBean> apply_home_salaried(
+            @Part("mobile") String mobile,
+            @Part("name") String name,
+            @Part("dob") String dob,
+            @Part("email") String email,
+            @Part("gender") String gender,
+            @Part("residence_type") String residence_type,
+            @Part("residence_address") String residence_address,
+            @Part("pan") String pan,
+            @Part("city") String city,
+            @Part("company_type") String company_type,
+            @Part("employement_type") String employement_type,
+            @Part("company_name") String company_name,
+            @Part("company_address") String company_address,
+            @Part("salary_mode") String salary_mode,
+            @Part("monthly_salary") String monthly_salary,
+            @Part("loan_details") String loan_details,
+            @Part("loan_anount") String loan_anount,
+            @Part("message") String message,
+            @Part("property_sale") String property_sale,
+            @Part("property_mode") String property_mode,
+            @Part("property_documents") String property_documents,
+            @Part("how_to") String how_to,
+            @Part("property_type") String property_type,
+            @Part("property_category") String property_category,
+            @Part("value") String value,
+            @Part("loan_amount_required") String loan_amount_required
+    );
+
 }
