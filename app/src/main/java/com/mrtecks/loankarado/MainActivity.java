@@ -95,6 +95,16 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        propertyself.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(MainActivity.this , PropertySelf.class);
+                startActivity(intent);
+
+            }
+        });
+
 
     }
 }
