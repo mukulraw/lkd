@@ -65,6 +65,7 @@
             android:layout_height="wrap_content"
             android:drawableStart="@drawable/ic_shopping_cart_black_24dp"
             android:drawablePadding="22dp"
+            android:textSize="16sp"
             android:padding="15dp"
             android:text="Home" />
 
@@ -76,6 +77,7 @@
             android:drawableStart="@drawable/ic_shopping_cart_black_24dp"
             android:drawablePadding="22dp"
             android:padding="15dp"
+            android:textSize="16sp"
             android:text="Applications" />
 
         <TextView
@@ -91,6 +93,7 @@
             android:drawableStart="@drawable/ic_shopping_cart_black_24dp"
             android:drawablePadding="22dp"
             android:padding="15dp"
+            android:textSize="16sp"
             android:text="Gallery" />
 
 
@@ -102,6 +105,7 @@
             android:drawablePadding="22dp"
             android:padding="15dp"
             android:text="Videos"
+            android:textSize="16sp"
             android:visibility="visible" />
 
 
@@ -113,6 +117,7 @@
             android:drawablePadding="22dp"
             android:padding="15dp"
             android:text="Contact"
+            android:textSize="16sp"
             android:visibility="visible" />
 
 
@@ -128,6 +133,7 @@
             android:layout_height="wrap_content"
             android:drawableStart="@drawable/ic_shopping_cart_black_24dp"
             android:drawablePadding="22dp"
+            android:textSize="16sp"
             android:padding="15dp"
             android:text="Logout" />
 

@@ -210,4 +210,7 @@ public interface AllApiIneterface {
     @GET("api/getBanner.php")
     Call<bannerBean> getBanner();
 
+    @GET("api/getGallery.php")
+    Call<bannerBean> getGallery();
+
 }

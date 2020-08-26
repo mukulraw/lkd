@@ -102,19 +102,19 @@ public class MainActivity extends AppCompatActivity {
 
                         break;*/
                     case R.id.action_gallery:
-                        /*FragmentManager fm2 = getSupportFragmentManager();
+                        FragmentManager fm2 = getSupportFragmentManager();
 
                         for (int i = 0; i < fm2.getBackStackEntryCount(); ++i) {
                             fm2.popBackStack();
                         }
 
                         FragmentTransaction ft2 = fm2.beginTransaction();
-                        Search frag12 = new Search();
+                        Gallery frag12 = new Gallery();
                         ft2.replace(R.id.replace, frag12);
                         //ft.addToBackStack(null);
                         ft2.commit();
                         drawer.closeDrawer(GravityCompat.START);
-                        break;*/
+                        break;
                     case R.id.action_videos:
                         /*FragmentManager fm3 = getSupportFragmentManager();
 

@@ -135,7 +135,7 @@ public class Home extends Fragment {
 
                 ImageLoader loader = ImageLoader.getInstance();
                 DisplayImageOptions options = new DisplayImageOptions.Builder().cacheInMemory(true).cacheOnDisk(true).resetViewBeforeLoading(false).build();
-                loader.displayImage(response.body().getData(), banner, options);
+                loader.displayImage(response.body().getData().get(0), banner, options);
 
             }
 
