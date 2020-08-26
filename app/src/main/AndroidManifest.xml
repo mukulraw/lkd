@@ -13,7 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".PropertySelf"></activity>
+        <activity android:name=".OTP"></activity>
+        <activity android:name=".Login" />
+        <activity android:name=".PropertySelf" />
         <activity android:name=".HomeSelf" />
         <activity android:name=".PropertySalaried" />
         <activity android:name=".HomeSalaried" />

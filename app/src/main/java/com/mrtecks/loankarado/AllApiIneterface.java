@@ -9,6 +9,22 @@ import retrofit2.http.Part;
 public interface AllApiIneterface {
 
     @Multipart
+    @POST("api/login.php")
+    Call<loginBean> login(
+            @Part("phone") String phone,
+            @Part("token") String token,
+            @Part("referrer") String referrer
+    );
+
+    @Multipart
+    @POST("api/verify.php")
+    Call<loginBean> verify(
+            @Part("phone") String phone,
+            @Part("otp") String otp
+    );
+
+
+    @Multipart
     @POST("api/apply_personal.php")
     Call<applyBean> apply_personal(
             @Part("mobile") String mobile,

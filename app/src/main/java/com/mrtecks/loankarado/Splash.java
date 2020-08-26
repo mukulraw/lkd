@@ -19,12 +19,20 @@ public class Splash extends AppCompatActivity {
 
         t = new Timer();
 
+        final String id = SharePreferenceUtils.getInstance().getString("userId");
+
         t.schedule(new TimerTask() {
             @Override
             public void run() {
-                Intent intent = new Intent(Splash.this, MainActivity.class);
-                startActivity(intent);
-                finish();
+                if (id.length() > 0) {
+                    Intent intent = new Intent(Splash.this, MainActivity.class);
+                    startActivity(intent);
+                    finish();
+                } else {
+                    Intent intent = new Intent(Splash.this, Login.class);
+                    startActivity(intent);
+                    finish();
+                }
 
 
             }
