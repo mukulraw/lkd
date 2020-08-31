@@ -116,19 +116,19 @@ public class MainActivity extends AppCompatActivity {
                         drawer.closeDrawer(GravityCompat.START);
                         break;
                     case R.id.action_videos:
-                        /*FragmentManager fm3 = getSupportFragmentManager();
+                        FragmentManager fm3 = getSupportFragmentManager();
 
                         for (int i = 0; i < fm3.getBackStackEntryCount(); ++i) {
                             fm3.popBackStack();
                         }
 
                         FragmentTransaction ft3 = fm3.beginTransaction();
-                        Orders frag13 = new Orders();
+                        Videos frag13 = new Videos();
                         ft3.replace(R.id.replace, frag13);
                         //ft.addToBackStack(null);
                         ft3.commit();
                         drawer.closeDrawer(GravityCompat.START);
-                        break;*/
+                        break;
                     case R.id.action_contact:
                         /*FragmentManager fm4 = getSupportFragmentManager();
 

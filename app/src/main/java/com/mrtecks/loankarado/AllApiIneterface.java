@@ -1,5 +1,7 @@
 package com.mrtecks.loankarado;
 
+import com.mrtecks.loankarado.videoPOJO.videoBean;
+
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Multipart;
@@ -212,5 +214,8 @@ public interface AllApiIneterface {
 
     @GET("api/getGallery.php")
     Call<bannerBean> getGallery();
+
+    @GET("api/getVideos.php")
+    Call<videoBean> getVideos();
 
 }
