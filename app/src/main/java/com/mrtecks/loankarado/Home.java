@@ -24,6 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import me.relex.circleindicator.CircleIndicator;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
@@ -41,6 +42,8 @@ public class Home extends Fragment {
 
     static MainActivity mainActivity;
 
+    CircleIndicator indicator;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -49,6 +52,7 @@ public class Home extends Fragment {
         mainActivity = (MainActivity) getActivity();
 
         personal = view.findViewById(R.id.cardView2);
+        indicator = view.findViewById(R.id.indicator);
         business = view.findViewById(R.id.cardView);
         homesalaried = view.findViewById(R.id.cardView4);
         homeself = view.findViewById(R.id.cardView3);
@@ -142,6 +146,7 @@ public class Home extends Fragment {
 
                 PagerAdapter adapter = new PagerAdapter(getChildFragmentManager(), FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT, response.body().getData());
                 banner.setAdapter(adapter);
+                indicator.setViewPager(banner);
 
 
             }
