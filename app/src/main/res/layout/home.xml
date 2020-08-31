@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
+    android:background="@color/shade"
     android:layout_height="match_parent">
 
     <androidx.core.widget.NestedScrollView
@@ -24,7 +24,6 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
-                app:cardBackgroundColor="@color/light_blue"
                 app:cardCornerRadius="5dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
@@ -37,25 +36,14 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:layout_width="80dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="8dp"
                         android:adjustViewBounds="true"
                         android:padding="10dp"
                         android:scaleType="fitXY"
-                        android:src="@drawable/ic_loan" />
+                        android:src="@drawable/propertyself" />
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginEnd="8dp"
-                        android:layout_marginBottom="8dp"
-                        android:gravity="center"
-                        android:text="LOAN AGAINST PROPERTY\n(Self Employed)"
-                        android:textColor="#000000" />
 
                 </LinearLayout>
 
@@ -70,7 +58,6 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="16dp"
-                app:cardBackgroundColor="@color/light_blue"
                 app:cardCornerRadius="5dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/cardView5"
@@ -84,26 +71,13 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:layout_width="80dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="8dp"
                         android:adjustViewBounds="true"
                         android:padding="10dp"
                         android:scaleType="fitXY"
-                        android:src="@drawable/ic_loan" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginEnd="8dp"
-                        android:layout_marginBottom="8dp"
-                        android:gravity="center"
-                        android:text="LOAN AGAINST PROPERTY\n(Salaried Employee)"
-                        android:textColor="#000000" />
-
+                        android:src="@drawable/property" />
                 </LinearLayout>
 
 
@@ -116,7 +90,6 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
-                app:cardBackgroundColor="@color/light_blue"
                 app:cardCornerRadius="5dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
@@ -129,25 +102,14 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:layout_width="80dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="8dp"
                         android:adjustViewBounds="true"
                         android:padding="10dp"
                         android:scaleType="fitXY"
-                        android:src="@drawable/ic_loan" />
+                        android:src="@drawable/homeself" />
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginEnd="8dp"
-                        android:layout_marginBottom="8dp"
-                        android:gravity="center"
-                        android:text="HOME LOAN\n(Self Employed)"
-                        android:textColor="#000000" />
 
                 </LinearLayout>
 
@@ -161,7 +123,6 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="8dp"
-                app:cardBackgroundColor="@color/light_blue"
                 app:cardCornerRadius="5dp"
                 app:layout_constraintEnd_toStartOf="@+id/cardView3"
                 app:layout_constraintHorizontal_bias="0.5"
@@ -174,25 +135,13 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:layout_width="80dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="8dp"
                         android:adjustViewBounds="true"
                         android:padding="10dp"
                         android:scaleType="fitXY"
-                        android:src="@drawable/ic_loan" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginEnd="8dp"
-                        android:layout_marginBottom="8dp"
-                        android:gravity="center"
-                        android:text="HOME LOAN\n(Salaried Employee)"
-                        android:textColor="#000000" />
+                        android:src="@drawable/home" />
 
                 </LinearLayout>
 
@@ -232,7 +181,6 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="8dp"
-                app:cardBackgroundColor="@color/light_blue"
                 app:cardCornerRadius="5dp"
                 app:layout_constraintEnd_toStartOf="@+id/cardView"
                 app:layout_constraintHorizontal_bias="0.5"
@@ -245,25 +193,14 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:layout_width="80dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="8dp"
                         android:adjustViewBounds="true"
                         android:padding="10dp"
                         android:scaleType="fitXY"
-                        android:src="@drawable/ic_loan" />
+                        android:src="@drawable/personal" />
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginEnd="8dp"
-                        android:layout_marginBottom="8dp"
-                        android:gravity="center"
-                        android:text="PERSONAL LOAN"
-                        android:textColor="#000000" />
 
                 </LinearLayout>
 
@@ -276,7 +213,6 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
-                app:cardBackgroundColor="@color/light_blue"
                 app:cardCornerRadius="5dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
@@ -289,25 +225,13 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:layout_width="80dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="8dp"
                         android:adjustViewBounds="true"
                         android:padding="10dp"
                         android:scaleType="fitXY"
-                        android:src="@drawable/ic_loan" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginEnd="8dp"
-                        android:layout_marginBottom="8dp"
-                        android:gravity="center"
-                        android:text="BUSINESS LOAN"
-                        android:textColor="#000000" />
+                        android:src="@drawable/business" />
 
                 </LinearLayout>
 
