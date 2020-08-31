@@ -3,19 +3,25 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
+    <string name="select_gender">Select Gender</string>
+
+
     <string-array name="gender">
+        <item>Select Gender</item>
         <item>Male</item>
         <item>Female</item>
         <item>Others</item>
     </string-array>
 
     <string-array name="residence_type">
+        <item>Select Residence Type</item>
         <item>Rented</item>
         <item>Self owned</item>
         <item>Family owned</item>
     </string-array>
 
     <string-array name="city">
+        <item>Select City</item>
         <item>Noida</item>
         <item>Greater Noida</item>
         <item>Ghaziabad</item>
@@ -25,7 +31,7 @@
     </string-array>
 
     <string-array name="company_type">
-        <item>Government</item>
+        <item>Select Company Type</item>
         <item>Private Limited</item>
         <item>Proprietor</item>
         <item>Partnership</item>
@@ -33,6 +39,7 @@
     </string-array>
 
     <string-array name="employement">
+        <item>Select Employment Type</item>
         <item>Salaried</item>
     </string-array>
 
@@ -55,23 +62,27 @@
     </string-array>
 
     <string-array name="salary_mode">
+        <item>Select Salary Mode</item>
         <item>In Account</item>
         <item>In hand</item>
         <item>By cheque</item>
     </string-array>
 
     <string-array name="current_account">
+        <item>Select</item>
         <item>Yes</item>
         <item>No</item>
     </string-array>
 
     <string-array name="property_sale">
+        <item>Select Property sale by</item>
         <item>Self sale</item>
         <item>Builder sale</item>
         <item>Dealer sale</item>
     </string-array>
 
     <string-array name="property_mode">
+        <item>Select Property Mode</item>
         <item>Free hold Area</item>
         <item>Government approved area</item>
         <item>Lal Dora area</item>
@@ -79,6 +90,7 @@
     </string-array>
 
     <string-array name="property_documents">
+        <item>Select Property documents</item>
         <item>Khasra khatuni</item>
         <item>General power attony</item>
         <item>Sale deed</item>
@@ -86,16 +98,19 @@
     </string-array>
 
     <string-array name="how_to">
+        <item>Select</item>
         <item>Sale deed</item>
     </string-array>
 
     <string-array name="property_type">
+        <item>Select Type of property</item>
         <item>Residential</item>
         <item>Commercial</item>
         <item>Land</item>
     </string-array>
 
     <string-array name="property_category">
+        <item>Select Property category</item>
         <item>Home</item>
         <item>Shop or office</item>
         <item>Plot</item>
@@ -105,6 +120,7 @@
     </string-array>
 
     <string-array name="loan_amount_required">
+        <item>Select</item>
         <item>More than 80%</item>
         <item>Less than 80%</item>
     </string-array>

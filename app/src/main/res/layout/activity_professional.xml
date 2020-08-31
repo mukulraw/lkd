@@ -29,7 +29,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="16dp"
                 android:background="@drawable/white_back_round"
-                android:hint="tap to enter"
+                android:hint="PAN Number"
                 android:inputType="textCapCharacters"
                 android:padding="10dp" />
 
@@ -124,7 +124,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="16dp"
                 android:background="@drawable/white_back_round"
-                android:hint="tap to enter"
+                android:hint="Company Name"
                 android:inputType="text"
                 android:padding="10dp" />
 
@@ -144,7 +144,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="16dp"
                 android:background="@drawable/white_back_round"
-                android:hint="tap to enter"
+                android:hint="Company Address"
                 android:inputType="text"
                 android:padding="10dp" />
 
@@ -189,7 +189,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="16dp"
                 android:background="@drawable/white_back_round"
-                android:hint="tap to enter"
+                android:hint="Monthly Salary"
                 android:inputType="number"
                 android:padding="10dp" />
 
@@ -209,7 +209,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="16dp"
                 android:background="@drawable/white_back_round"
-                android:hint="tap to enter"
+                android:hint="Loan Details"
                 android:inputType="text"
                 android:padding="10dp" />
 
@@ -229,7 +229,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="16dp"
                 android:background="@drawable/white_back_round"
-                android:hint="tap to enter"
+                android:hint="Loan Amount"
                 android:inputType="number"
                 android:padding="10dp" />
 
@@ -249,7 +249,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="16dp"
                 android:background="@drawable/white_back_round"
-                android:hint="tap to enter"
+                android:hint="Message"
                 android:inputType="text"
                 android:padding="10dp" />
 
