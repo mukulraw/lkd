@@ -1,5 +1,6 @@
 package com.mrtecks.loankarado;
 
+import com.mrtecks.loankarado.loanPOJO.loanBean;
 import com.mrtecks.loankarado.videoPOJO.videoBean;
 
 import retrofit2.Call;
@@ -29,6 +30,7 @@ public interface AllApiIneterface {
     @Multipart
     @POST("api/apply_personal.php")
     Call<applyBean> apply_personal(
+            @Part("userId") String userId,
             @Part("mobile") String mobile,
             @Part("name") String name,
             @Part("dob") String dob,
@@ -52,6 +54,7 @@ public interface AllApiIneterface {
     @Multipart
     @POST("api/apply_business.php")
     Call<applyBean> apply_business(
+            @Part("userId") String userId,
             @Part("mobile") String mobile,
             @Part("name") String name,
             @Part("dob") String dob,
@@ -79,6 +82,7 @@ public interface AllApiIneterface {
     @Multipart
     @POST("api/apply_home_salaried.php")
     Call<applyBean> apply_home_salaried(
+            @Part("userId") String userId,
             @Part("mobile") String mobile,
             @Part("name") String name,
             @Part("dob") String dob,
@@ -110,6 +114,7 @@ public interface AllApiIneterface {
     @Multipart
     @POST("api/apply_property_salaried.php")
     Call<applyBean> apply_property_salaried(
+            @Part("userId") String userId,
             @Part("mobile") String mobile,
             @Part("name") String name,
             @Part("dob") String dob,
@@ -142,6 +147,7 @@ public interface AllApiIneterface {
     @Multipart
     @POST("api/apply_home_self.php")
     Call<applyBean> apply_home_self(
+            @Part("userId") String userId,
             @Part("mobile") String mobile,
             @Part("name") String name,
             @Part("dob") String dob,
@@ -177,6 +183,7 @@ public interface AllApiIneterface {
     @Multipart
     @POST("api/apply_property_self.php")
     Call<applyBean> apply_property_self(
+            @Part("userId") String userId,
             @Part("mobile") String mobile,
             @Part("name") String name,
             @Part("dob") String dob,
@@ -217,5 +224,11 @@ public interface AllApiIneterface {
 
     @GET("api/getVideos.php")
     Call<videoBean> getVideos();
+
+    @Multipart
+    @POST("api/getMyLoan.php")
+    Call<loanBean> getMyLoan(
+            @Part("user_id") String user_id
+    );
 
 }

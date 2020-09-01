@@ -355,6 +355,7 @@ public class HomeSalaried extends AppCompatActivity {
                     AllApiIneterface cr = retrofit.create(AllApiIneterface.class);
 
                     Call<applyBean> call = cr.apply_home_salaried(
+                            SharePreferenceUtils.getInstance().getString("userId"),
                             SharePreferenceUtils.getInstance().getString("mobile"),
                             SharePreferenceUtils.getInstance().getString("name"),
                             SharePreferenceUtils.getInstance().getString("dob"),
@@ -389,7 +390,7 @@ public class HomeSalaried extends AppCompatActivity {
 
                             if (response.body().getStatus().equals("1")) {
 
-                                SharePreferenceUtils.getInstance().deletePref();
+                                //SharePreferenceUtils.getInstance().deletePref();
 
                                 Toast.makeText(getContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
                                 getActivity().finish();

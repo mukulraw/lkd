@@ -355,6 +355,7 @@ public class PropertySalaried extends AppCompatActivity {
                     AllApiIneterface cr = retrofit.create(AllApiIneterface.class);
 
                     Call<applyBean> call = cr.apply_property_salaried(
+                            SharePreferenceUtils.getInstance().getString("userId"),
                             SharePreferenceUtils.getInstance().getString("mobile"),
                             SharePreferenceUtils.getInstance().getString("name"),
                             SharePreferenceUtils.getInstance().getString("dob"),
