@@ -1,5 +1,6 @@
 package com.mrtecks.loankarado;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.SearchRecentSuggestionsProvider;
 import android.os.Bundle;
@@ -33,7 +34,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
 
-public class Gallery extends Fragment  {
+public class Gallery extends Fragment {
 
     RecyclerView galleryView;
     static MainActivity mainActivity;
@@ -45,7 +46,7 @@ public class Gallery extends Fragment  {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.gallery , container , false);
+        View view = inflater.inflate(R.layout.gallery, container, false);
         mainActivity = (MainActivity) getActivity();
 
         list = new ArrayList<>();
@@ -54,8 +55,8 @@ public class Gallery extends Fragment  {
         progress = view.findViewById(R.id.progressBar2);
 
 
-        adapter = new GalleryAdapter(mainActivity , list);
-        manager = new StaggeredGridLayoutManager(2 , StaggeredGridLayoutManager.VERTICAL);
+        adapter = new GalleryAdapter(mainActivity, list);
+        manager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
 
         galleryView.setAdapter(adapter);
         galleryView.setLayoutManager(manager);
@@ -98,19 +99,16 @@ public class Gallery extends Fragment  {
         return view;
     }
 
-    class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.ViewHolder>
-    {
+    class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.ViewHolder> {
         Context context;
         ArrayList<String> list = new ArrayList<>();
 
-        public GalleryAdapter(Context context , ArrayList<String> list)
-        {
+        public GalleryAdapter(Context context, ArrayList<String> list) {
             this.context = context;
             this.list = list;
         }
 
-        public void setData(ArrayList<String> list)
-        {
+        public void setData(ArrayList<String> list) {
             this.list = list;
             notifyDataSetChanged();
         }
@@ -118,8 +116,8 @@ public class Gallery extends Fragment  {
         @NonNull
         @Override
         public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            LayoutInflater inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            View view = inflater.inflate(R.layout.gallery_list_item , parent , false);
+            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            View view = inflater.inflate(R.layout.gallery_list_item, parent, false);
             return new ViewHolder(view);
         }
 
@@ -127,11 +125,29 @@ public class Gallery extends Fragment  {
         public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
             holder.setIsRecyclable(false);
-            String item = list.get(position);
+            final String item = list.get(position);
 
-            DisplayImageOptions options = new DisplayImageOptions.Builder().cacheInMemory(true).cacheOnDisk(true).resetViewBeforeLoading(false).build();
-            ImageLoader loader = ImageLoader.getInstance();
-            loader.displayImage(item , holder.image , options);
+            final DisplayImageOptions options = new DisplayImageOptions.Builder().cacheInMemory(true).cacheOnDisk(true).resetViewBeforeLoading(false).build();
+            final ImageLoader loader = ImageLoader.getInstance();
+            loader.displayImage(item, holder.image, options);
+
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    Dialog dialog = new Dialog(context, android.R.style.Theme_Black_NoTitleBar_Fullscreen);
+                    //dialog.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT,
+                    //      WindowManager.LayoutParams.MATCH_PARENT);
+                    dialog.setContentView(R.layout.zoom_dialog);
+                    dialog.setCancelable(true);
+                    dialog.show();
+
+                    ImageView img = dialog.findViewById(R.id.image);
+                    loader.displayImage(item, img, options);
+
+                }
+            });
+
 
         }
 
@@ -140,8 +156,7 @@ public class Gallery extends Fragment  {
             return list.size();
         }
 
-        class ViewHolder extends RecyclerView.ViewHolder
-        {
+        class ViewHolder extends RecyclerView.ViewHolder {
             ImageView image;
 
             public ViewHolder(@NonNull View itemView) {
