@@ -48,12 +48,14 @@
     </string-array>
 
     <string-array name="office_type">
+        <item>Select Office Type</item>
         <item>Rented</item>
         <item>Self owned</item>
         <item>Family owned</item>
     </string-array>
 
     <string-array name="registration_age">
+        <item>Select Business Registration Age</item>
         <item>More than 2 year</item>
         <item>Less then 2 year</item>
         <item>More than1 year</item>
