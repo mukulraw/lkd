@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
     Toolbar toolbar;
     DrawerLayout drawer;
     BottomNavigationView navigation;
-    TextView rewards, login, terms, about, address, logout, cart, orders, refer;
+    TextView home, login, applications, gallery, videos, logout, contact;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +52,11 @@ public class MainActivity extends AppCompatActivity {
         navigation = (BottomNavigationView) findViewById(R.id.bottom_navigation);
         login = findViewById(R.id.textView3);
         logout = findViewById(R.id.logout);
+        home = findViewById(R.id.home);
+        applications = findViewById(R.id.applications);
+        gallery = findViewById(R.id.gallery);
+        videos = findViewById(R.id.videos);
+        contact = findViewById(R.id.contact);
 
         setSupportActionBar(toolbar);
 
@@ -87,20 +92,20 @@ public class MainActivity extends AppCompatActivity {
 
                         break;
                     case R.id.action_applications:
-                        /*FragmentManager fm1 = getSupportFragmentManager();
+                        FragmentManager fm1 = getSupportFragmentManager();
 
                         for (int i = 0; i < fm1.getBackStackEntryCount(); ++i) {
                             fm1.popBackStack();
                         }
 
                         FragmentTransaction ft1 = fm1.beginTransaction();
-                        Category frag11 = new Category();
+                        Applications frag11 = new Applications();
                         ft1.replace(R.id.replace, frag11);
                         //ft.addToBackStack(null);
                         ft1.commit();
                         drawer.closeDrawer(GravityCompat.START);
 
-                        break;*/
+                        break;
                     case R.id.action_gallery:
                         FragmentManager fm2 = getSupportFragmentManager();
 
@@ -130,19 +135,19 @@ public class MainActivity extends AppCompatActivity {
                         drawer.closeDrawer(GravityCompat.START);
                         break;
                     case R.id.action_contact:
-                        /*FragmentManager fm4 = getSupportFragmentManager();
+                        FragmentManager fm4 = getSupportFragmentManager();
 
                         for (int i = 0; i < fm4.getBackStackEntryCount(); ++i) {
                             fm4.popBackStack();
                         }
 
                         FragmentTransaction ft4 = fm4.beginTransaction();
-                        Cart frag14 = new Cart();
+                        Contact frag14 = new Contact();
                         ft4.replace(R.id.replace, frag14);
                         //ft.addToBackStack(null);
                         ft4.commit();
                         drawer.closeDrawer(GravityCompat.START);
-                        break;*/
+                        break;
                 }
                 return true;
             }
@@ -160,6 +165,48 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+        home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                navigation.setSelectedItemId(R.id.action_home);
+                drawer.closeDrawer(GravityCompat.START);
+            }
+        });
+
+        applications.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                navigation.setSelectedItemId(R.id.action_applications);
+                drawer.closeDrawer(GravityCompat.START);
+            }
+        });
+
+
+        gallery.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                navigation.setSelectedItemId(R.id.action_gallery);
+                drawer.closeDrawer(GravityCompat.START);
+            }
+        });
+
+        videos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                navigation.setSelectedItemId(R.id.action_videos);
+                drawer.closeDrawer(GravityCompat.START);
+            }
+        });
+
+        contact.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                navigation.setSelectedItemId(R.id.action_contact);
+                drawer.closeDrawer(GravityCompat.START);
+            }
+        });
+
 
         navigation.setSelectedItemId(R.id.action_home);
 
