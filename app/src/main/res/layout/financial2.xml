@@ -19,44 +19,20 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
-                android:text="PAN Number *" />
+                android:text="Yearly Sales *" />
 
             <EditText
-                android:id="@+id/pan"
+                android:id="@+id/yearly_saless"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="16dp"
                 android:background="@drawable/white_back_round"
-                android:hint="PAN Number"
-                android:inputType="textCapCharacters"
+                android:hint="Yearly Sales"
+                android:inputType="text"
                 android:padding="10dp" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
-                android:text="City *" />
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="43dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="16dp"
-                android:background="@drawable/white_back_round">
-
-                <Spinner
-                    android:id="@+id/city"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:entries="@array/city" />
-
-            </RelativeLayout>
 
             <TextView
                 android:layout_width="match_parent"
@@ -64,67 +40,38 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
-                android:text="Company Type *" />
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="43dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="16dp"
-                android:background="@drawable/white_back_round">
-
-                <Spinner
-                    android:id="@+id/company_type"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:entries="@array/company_type2" />
-
-            </RelativeLayout>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
-                android:text="Employment Type *" />
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="43dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="16dp"
-                android:background="@drawable/white_back_round">
-
-                <Spinner
-                    android:id="@+id/employment"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:entries="@array/employement" />
-
-            </RelativeLayout>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
-                android:text="Company Name *" />
+                android:text="Income in ITR (Avg.) *" />
 
             <EditText
-                android:id="@+id/company_name"
+                android:id="@+id/income_in_itr"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="16dp"
                 android:background="@drawable/white_back_round"
-                android:hint="Company Name"
+                android:hint="Income in ITR"
+                android:inputType="text"
+                android:padding="10dp" />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:text="Oldest ITR Date *" />
+
+            <EditText
+                android:id="@+id/oldest_irt_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/white_back_round"
+                android:hint="Oldest ITR Date"
                 android:inputType="text"
                 android:padding="10dp" />
 
@@ -134,27 +81,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
-                android:text="Company Address *" />
-
-            <EditText
-                android:id="@+id/company_address"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="16dp"
-                android:background="@drawable/white_back_round"
-                android:hint="Company Address"
-                android:inputType="text"
-                android:padding="10dp" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
-                android:text="Salary Mode *" />
+                android:text="Do you have a Current Account ? *" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -165,11 +92,11 @@
                 android:background="@drawable/white_back_round">
 
                 <Spinner
-                    android:id="@+id/salary_mode"
+                    android:id="@+id/current_account"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:entries="@array/salary_mode2" />
+                    android:entries="@array/current_account" />
 
             </RelativeLayout>
 
@@ -179,27 +106,8 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
-                android:text="Monthly Salary *" />
-
-            <EditText
-                android:id="@+id/salary"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="16dp"
-                android:background="@drawable/white_back_round"
-                android:hint="Monthly Salary"
-                android:inputType="number"
-                android:padding="10dp" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
-                android:text="Loan Details *" />
+                android:text="Loan Details *"
+                android:visibility="gone" />
 
             <EditText
                 android:id="@+id/loan_details"
@@ -211,7 +119,8 @@
                 android:background="@drawable/white_back_round"
                 android:hint="Loan Details"
                 android:inputType="text"
-                android:padding="10dp" />
+                android:padding="10dp"
+                android:visibility="gone" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -229,7 +138,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="16dp"
                 android:background="@drawable/white_back_round"
-                android:hint="Between ₹25,000 - ₹15 crores"
+                android:hint="Loan Amount"
                 android:inputType="number"
                 android:padding="10dp" />
 

@@ -295,7 +295,7 @@ public class Business extends AppCompatActivity {
         @Nullable
         @Override
         public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-            View view = inflater.inflate(R.layout.financial, container, false);
+            View view = inflater.inflate(R.layout.financial2, container, false);
 
             yearly_saless = view.findViewById(R.id.yearly_saless);
             income_in_itr = view.findViewById(R.id.income_in_itr);

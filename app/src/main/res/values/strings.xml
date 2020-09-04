@@ -38,6 +38,16 @@
         <item>LLP</item>
     </string-array>
 
+    <string-array name="company_type2">
+        <item>Select Company Type</item>
+        <item>Government</item>
+        <item>Private Limited</item>
+        <item>Proprietor</item>
+        <item>Partnership</item>
+        <item>LLP</item>
+    </string-array>
+
+
     <string-array name="employement">
         <item>Select Employment Type</item>
         <item>Salaried</item>
@@ -45,6 +55,18 @@
 
     <string-array name="registration_type">
         <item>Select</item>
+        <item>No Registration</item>
+        <item>VAT</item>
+        <item>COI</item>
+        <item>Shop Act</item>
+        <item>Food License</item>
+        <item>Drug License</item>
+        <item>Udyog Aadhar</item>
+        <item>BRN</item>
+        <item>Labor License</item>
+        <item>Service Tax</item>
+        <item>MSME</item>
+        <item>Others</item>
     </string-array>
 
     <string-array name="office_type">
@@ -69,6 +91,12 @@
         <item>In hand</item>
         <item>By cheque</item>
     </string-array>
+
+    <string-array name="salary_mode2">
+        <item>Select Salary Mode</item>
+        <item>In Account</item>
+    </string-array>
+
 
     <string-array name="current_account">
         <item>Select</item>
@@ -98,6 +126,12 @@
         <item>Sale deed</item>
         <item>Gifted property</item>
     </string-array>
+
+    <string-array name="property_documents2">
+        <item>Select Property documents</item>
+        <item>Sale deed</item>
+    </string-array>
+
 
     <string-array name="how_to">
         <item>Select</item>

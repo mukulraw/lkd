@@ -316,7 +316,7 @@ public class PropertySalaried extends AppCompatActivity {
         @Nullable
         @Override
         public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-            View view = inflater.inflate(R.layout.property, container, false);
+            View view = inflater.inflate(R.layout.property2, container, false);
 
             property_sale = view.findViewById(R.id.property_sale);
             property_mode = view.findViewById(R.id.property_mode);
