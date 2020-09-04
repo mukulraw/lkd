@@ -58,7 +58,7 @@ public class Home extends Fragment {
         homeself = view.findViewById(R.id.cardView3);
         propertysalaried = view.findViewById(R.id.cardView6);
         propertyself = view.findViewById(R.id.cardView5);
-        banner = view.findViewById(R.id.imageView2);
+        banner = view.findViewById(R.id.pager);
 
         personal.setOnClickListener(new View.OnClickListener() {
             @Override
