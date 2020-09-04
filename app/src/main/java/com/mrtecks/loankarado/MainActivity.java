@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        toolbar.setTitle("Loan Kara Do");
+        toolbar.setTitle("");
         toolbar.setTitleTextColor(Color.WHITE);
 
         navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {

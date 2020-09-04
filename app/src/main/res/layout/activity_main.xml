@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <LinearLayout
+        <RelativeLayout
             android:id="@+id/linearLayout10"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -31,8 +31,15 @@
                 android:elevation="4dp"
                 android:minHeight="?attr/actionBarSize"/>
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="Loan Kara Do"
+                android:textColor="#ffffff"
+                android:textSize="24sp"/>
 
-        </LinearLayout>
+        </RelativeLayout>
 
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
