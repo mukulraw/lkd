@@ -22,6 +22,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
@@ -38,6 +39,9 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
+import zendesk.chat.Chat;
+import zendesk.chat.ChatEngine;
+import zendesk.messaging.MessagingActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -45,11 +49,14 @@ public class MainActivity extends AppCompatActivity {
     DrawerLayout drawer;
     BottomNavigationView navigation;
     TextView home, login, applications, gallery, videos, logout, contact;
+    FloatingActionButton chat;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Chat.INSTANCE.init(this, "KzuoxBpizkC38hCX7lVdnei8kdVRxqOo");
 
         toolbar = findViewById(R.id.toolbar);
         navigation = (BottomNavigationView) findViewById(R.id.bottom_navigation);
@@ -60,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
         gallery = findViewById(R.id.gallery);
         videos = findViewById(R.id.videos);
         contact = findViewById(R.id.contact);
+        chat = findViewById(R.id.textView15);
 
         setSupportActionBar(toolbar);
 
@@ -219,6 +227,17 @@ public class MainActivity extends AppCompatActivity {
             login.setText(SharePreferenceUtils.getInstance().getString("phone"));
 
         }
+
+        chat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                MessagingActivity.builder()
+                        .withEngines(ChatEngine.engine())
+                        .show(view.getContext());
+
+            }
+        });
 
 
     }

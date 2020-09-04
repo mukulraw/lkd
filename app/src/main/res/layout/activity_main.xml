@@ -6,8 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/shade"
-    tools:openDrawer="start"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    tools:openDrawer="start">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/relativeLayout"
@@ -29,7 +29,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:elevation="4dp"
-                android:minHeight="?attr/actionBarSize"/>
+                android:minHeight="?attr/actionBarSize" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -37,7 +37,7 @@
                 android:layout_centerInParent="true"
                 android:text="Loan Kara Do"
                 android:textColor="#ffffff"
-                android:textSize="24sp"/>
+                android:textSize="24sp" />
 
         </RelativeLayout>
 
@@ -61,7 +61,21 @@
             app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout10" />
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout10">
+
+        </LinearLayout>
+
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/textView15"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:backgroundTint="#ffffff"
+            android:src="@drawable/ic_conversation"
+            app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
+            app:layout_constraintEnd_toEndOf="parent" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
