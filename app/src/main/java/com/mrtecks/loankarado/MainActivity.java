@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Chat.INSTANCE.init(this, "KzuoxBpizkC38hCX7lVdnei8kdVRxqOo");
+        Chat.INSTANCE.init(this, "yw3Pvlsi7o8SZiLl7timWfW9mZViKLJo");
 
         toolbar = findViewById(R.id.toolbar);
         navigation = (BottomNavigationView) findViewById(R.id.bottom_navigation);
