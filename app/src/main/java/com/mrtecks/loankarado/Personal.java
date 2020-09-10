@@ -182,7 +182,7 @@ public class Personal extends AppCompatActivity {
                     String n = name.getText().toString();
                     String d = dob.getText().toString();
 
-                    if (m.length() > 0) {
+                    if (m.length() == 10) {
                         if (n.length() > 0) {
                             if (d.length() > 0) {
 
