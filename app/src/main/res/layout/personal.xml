@@ -83,7 +83,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
-                android:text="Customer's Email Id" />
+                android:text="Customer's Email Id *" />
 
             <EditText
                 android:id="@+id/email"

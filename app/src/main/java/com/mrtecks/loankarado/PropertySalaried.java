@@ -12,6 +12,7 @@ import androidx.viewpager.widget.ViewPager;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,9 +25,13 @@ import android.widget.Toast;
 import com.github.florent37.singledateandtimepicker.dialog.SingleDateAndTimePickerDialog;
 import com.google.android.material.tabs.TabLayout;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.Objects;
 import java.util.concurrent.TimeUnit;
+import java.util.regex.Pattern;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -117,6 +122,7 @@ public class PropertySalaried extends AppCompatActivity {
         Spinner residence_type;
         EditText residence_address;
         Button next;
+        int ag2 = 0;
 
         @Nullable
         @Override
@@ -164,6 +170,15 @@ public class PropertySalaried extends AppCompatActivity {
 
                                     dob.setText(dd);
 
+
+                                    ag2 = getAge(dd);
+
+
+                                    if (ag2 < 18) {
+                                        Toast.makeText(getContext(), "You are not eligible to register in this app", Toast.LENGTH_SHORT).show();
+                                    }
+
+
                                 }
                             })
                             .display();
@@ -178,19 +193,24 @@ public class PropertySalaried extends AppCompatActivity {
                     String m = mobile.getText().toString();
                     String n = name.getText().toString();
                     String d = dob.getText().toString();
+                    String e = email.getText().toString();
 
-                    if (m.length() > 0) {
+                    if (m.length() == 10) {
                         if (n.length() > 0) {
-                            if (d.length() > 0) {
+                            if (ag2 > 17) {
+                                if (isValidEmail(e)) {
+                                    SharePreferenceUtils.getInstance().saveString("mobile", mobile.getText().toString());
+                                    SharePreferenceUtils.getInstance().saveString("name", name.getText().toString());
+                                    SharePreferenceUtils.getInstance().saveString("dob", dob.getText().toString());
+                                    SharePreferenceUtils.getInstance().saveString("email", email.getText().toString());
+                                    SharePreferenceUtils.getInstance().saveString("gender", gender.getSelectedItem().toString());
+                                    SharePreferenceUtils.getInstance().saveString("residence_type", residence_type.getSelectedItem().toString());
+                                    SharePreferenceUtils.getInstance().saveString("residence_address", residence_address.getText().toString());
+                                    pager.setCurrentItem(1);
+                                } else {
+                                    Toast.makeText(getContext(), "Invalid email", Toast.LENGTH_SHORT).show();
+                                }
 
-                                SharePreferenceUtils.getInstance().saveString("mobile", mobile.getText().toString());
-                                SharePreferenceUtils.getInstance().saveString("name", name.getText().toString());
-                                SharePreferenceUtils.getInstance().saveString("dob", dob.getText().toString());
-                                SharePreferenceUtils.getInstance().saveString("email", email.getText().toString());
-                                SharePreferenceUtils.getInstance().saveString("gender", gender.getSelectedItem().toString());
-                                SharePreferenceUtils.getInstance().saveString("residence_type", residence_type.getSelectedItem().toString());
-                                SharePreferenceUtils.getInstance().saveString("residence_address", residence_address.getText().toString());
-                                pager.setCurrentItem(1);
 
                             } else {
                                 Toast.makeText(getContext(), "Invalid D.O.B.", Toast.LENGTH_SHORT).show();
@@ -203,11 +223,54 @@ public class PropertySalaried extends AppCompatActivity {
                     }
 
 
+
+
                 }
             });
 
             return view;
         }
+
+        private boolean isValidEmail(String email) {
+            Pattern pattern = Patterns.EMAIL_ADDRESS;
+            return pattern.matcher(email).matches();
+        }
+
+        private int getAge(String dobString) {
+
+
+            int age = 0;
+            try {
+                SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+                Date date1 = sdf.parse(dobString);
+                Calendar now = Calendar.getInstance();
+                Calendar dob = Calendar.getInstance();
+                dob.setTime(Objects.requireNonNull(date1));
+                if (dob.after(now)) {
+                    Toast.makeText(getContext(), "Can't be born in the future", Toast.LENGTH_SHORT).show();
+                }
+                int year1 = now.get(Calendar.YEAR);
+                int year2 = dob.get(Calendar.YEAR);
+                age = year1 - year2;
+                int month1 = now.get(Calendar.MONTH);
+                int month2 = dob.get(Calendar.MONTH);
+                if (month2 > month1) {
+                    age--;
+                } else if (month1 == month2) {
+                    int day1 = now.get(Calendar.DAY_OF_MONTH);
+                    int day2 = dob.get(Calendar.DAY_OF_MONTH);
+                    if (day2 > day1) {
+                        age--;
+                    }
+                }
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            return age;
+
+
+        }
+
     }
 
     public static class professional extends Fragment {
