@@ -317,7 +317,7 @@ public class PropertySalaried extends AppCompatActivity {
                     String c = company_name.getText().toString();
                     String ca = company_address.getText().toString();
                     String m = monthly_salary.getText().toString();
-                    String l = loan_details.getText().toString();
+                    String l = loan_amount.getText().toString();
 
                     if (p.length() > 0) {
                         if (c.length() > 0) {
@@ -340,7 +340,7 @@ public class PropertySalaried extends AppCompatActivity {
                                         pager.setCurrentItem(2);
 
                                     } else {
-                                        Toast.makeText(getContext(), "Invalid loan details", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(getContext(), "Invalid loan amount", Toast.LENGTH_SHORT).show();
                                     }
                                 } else {
                                     Toast.makeText(getContext(), "Invalid monthly salary", Toast.LENGTH_SHORT).show();
@@ -379,7 +379,7 @@ public class PropertySalaried extends AppCompatActivity {
         @Nullable
         @Override
         public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-            View view = inflater.inflate(R.layout.property2, container, false);
+            View view = inflater.inflate(R.layout.property3, container, false);
 
             property_sale = view.findViewById(R.id.property_sale);
             property_mode = view.findViewById(R.id.property_mode);

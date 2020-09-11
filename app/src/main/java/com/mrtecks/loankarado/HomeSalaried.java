@@ -316,7 +316,7 @@ public class HomeSalaried extends AppCompatActivity {
                     String c = company_name.getText().toString();
                     String ca = company_address.getText().toString();
                     String m = monthly_salary.getText().toString();
-                    String l = loan_details.getText().toString();
+                    String l = loan_amount.getText().toString();
 
                     if (p.length() > 0) {
                         if (c.length() > 0) {
@@ -339,7 +339,7 @@ public class HomeSalaried extends AppCompatActivity {
                                         pager.setCurrentItem(2);
 
                                     } else {
-                                        Toast.makeText(getContext(), "Invalid loan details", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(getContext(), "Invalid loan amount", Toast.LENGTH_SHORT).show();
                                     }
                                 } else {
                                     Toast.makeText(getContext(), "Invalid monthly salary", Toast.LENGTH_SHORT).show();

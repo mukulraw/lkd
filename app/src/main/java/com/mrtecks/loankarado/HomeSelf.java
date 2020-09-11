@@ -378,7 +378,7 @@ public class HomeSelf extends AppCompatActivity {
                     String y = yearly_saless.getText().toString();
                     String i = income_in_itr.getText().toString();
                     String o = oldest_irt_date.getText().toString();
-                    String l = loan_details.getText().toString();
+                    String l = loan_amount.getText().toString();
 
                     if (y.length() > 0) {
                         if (i.length() > 0) {
@@ -395,15 +395,17 @@ public class HomeSelf extends AppCompatActivity {
 
                                     pager.setCurrentItem(3);
 
+                                } else {
+                                    Toast.makeText(getContext(), "Invalid loan amount", Toast.LENGTH_SHORT).show();
                                 }
                             } else {
-                                Toast.makeText(getContext(), "Invalid office address", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getContext(), "Invalid oldest itr date", Toast.LENGTH_SHORT).show();
                             }
                         } else {
-                            Toast.makeText(getContext(), "Invalid company name", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(), "Invalid income tax return", Toast.LENGTH_SHORT).show();
                         }
                     } else {
-                        Toast.makeText(getContext(), "Invalid PAN Number", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), "Invalid yearly sales", Toast.LENGTH_SHORT).show();
                     }
 
                 }

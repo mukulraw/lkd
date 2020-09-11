@@ -378,7 +378,7 @@ public class PropertySelf extends AppCompatActivity {
                     String y = yearly_saless.getText().toString();
                     String i = income_in_itr.getText().toString();
                     String o = oldest_irt_date.getText().toString();
-                    String l = loan_details.getText().toString();
+                    String l = loan_amount.getText().toString();
 
                     if (y.length() > 0) {
                         if (i.length() > 0) {
@@ -395,15 +395,17 @@ public class PropertySelf extends AppCompatActivity {
 
                                     pager.setCurrentItem(3);
 
+                                } else {
+                                    Toast.makeText(getContext(), "Invalid loan amount", Toast.LENGTH_SHORT).show();
                                 }
                             } else {
-                                Toast.makeText(getContext(), "Invalid office address", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getContext(), "Invalid oldest itr date", Toast.LENGTH_SHORT).show();
                             }
                         } else {
-                            Toast.makeText(getContext(), "Invalid company name", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(), "Invalid income tax return", Toast.LENGTH_SHORT).show();
                         }
                     } else {
-                        Toast.makeText(getContext(), "Invalid PAN Number", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), "Invalid yearly sales", Toast.LENGTH_SHORT).show();
                     }
 
                 }
@@ -430,7 +432,7 @@ public class PropertySelf extends AppCompatActivity {
         @Nullable
         @Override
         public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-            View view = inflater.inflate(R.layout.property2, container, false);
+            View view = inflater.inflate(R.layout.property3, container, false);
 
             property_sale = view.findViewById(R.id.property_sale);
             property_mode = view.findViewById(R.id.property_mode);

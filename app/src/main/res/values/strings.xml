@@ -106,7 +106,7 @@
 
     <string-array name="property_sale">
         <item>Select Property sale by</item>
-        <item>Self sale</item>
+        <item>Owner sale</item>
         <item>Builder sale</item>
         <item>Dealer sale</item>
     </string-array>
@@ -142,7 +142,6 @@
         <item>Select Type of property</item>
         <item>Residential</item>
         <item>Commercial</item>
-        <item>Land</item>
     </string-array>
 
     <string-array name="property_category">
