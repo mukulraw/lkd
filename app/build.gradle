@@ -5,7 +5,7 @@ android {
     buildToolsVersion "30.0.1"
 
     defaultConfig {
-        applicationId "com.mrtecks.loankarado"
+        applicationId "com.lkd.loankarado"
         minSdkVersion 21
         targetSdkVersion 30
         versionCode 1

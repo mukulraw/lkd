@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.mrtecks.loankarado">
+    package="com.lkd.loankarado">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name=".Bean"
+        android:name="com.lkd.loankarado.Bean"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -13,18 +13,18 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".OTP"></activity>
-        <activity android:name=".Login" />
-        <activity android:name=".PropertySelf" />
-        <activity android:name=".HomeSelf" />
-        <activity android:name=".PropertySalaried" />
-        <activity android:name=".HomeSalaried" />
-        <activity android:name=".Business" />
+        <activity android:name="com.lkd.loankarado.OTP"></activity>
+        <activity android:name="com.lkd.loankarado.Login" />
+        <activity android:name="com.lkd.loankarado.PropertySelf" />
+        <activity android:name="com.lkd.loankarado.HomeSelf" />
+        <activity android:name="com.lkd.loankarado.PropertySalaried" />
+        <activity android:name="com.lkd.loankarado.HomeSalaried" />
+        <activity android:name="com.lkd.loankarado.Business" />
         <activity
-            android:name=".Personal"
+            android:name="com.lkd.loankarado.Personal"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Splash"
+            android:name="com.lkd.loankarado.Splash"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -33,7 +33,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name="com.lkd.loankarado.MainActivity"
             android:screenOrientation="portrait" />
     </application>
 
