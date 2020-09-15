@@ -13,13 +13,27 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name="com.lkd.loankarado.OTP"></activity>
-        <activity android:name="com.lkd.loankarado.Login" />
-        <activity android:name="com.lkd.loankarado.PropertySelf" />
-        <activity android:name="com.lkd.loankarado.HomeSelf" />
-        <activity android:name="com.lkd.loankarado.PropertySalaried" />
-        <activity android:name="com.lkd.loankarado.HomeSalaried" />
-        <activity android:name="com.lkd.loankarado.Business" />
+        <activity
+            android:name="com.lkd.loankarado.OTP"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.lkd.loankarado.Login"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.lkd.loankarado.PropertySelf"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.lkd.loankarado.HomeSelf"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.lkd.loankarado.PropertySalaried"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.lkd.loankarado.HomeSalaried"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.lkd.loankarado.Business"
+            android:screenOrientation="portrait" />
         <activity
             android:name="com.lkd.loankarado.Personal"
             android:screenOrientation="portrait" />
@@ -35,6 +49,29 @@
         <activity
             android:name="com.lkd.loankarado.MainActivity"
             android:screenOrientation="portrait" />
+
+        <service
+            android:name=".MyFirebaseMessagingService"
+            android:permission="">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/logo" />
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/colorAccent" />
+        <!--
+ Set custom default icon. This is used when no icon is set for incoming notification messages.
+     See README(https://goo.gl/l4GJaQ) for more.
+        -->
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_channel_id"
+            android:value="@string/default_notification_channel_id" />
+
     </application>
 
 </manifest>
