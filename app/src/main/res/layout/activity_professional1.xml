@@ -169,7 +169,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:entries="@array/salary_mode2" />
+                    android:entries="@array/salary_mode3" />
 
             </RelativeLayout>
 
@@ -230,7 +230,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="16dp"
                 android:background="@drawable/white_back_round"
-                android:hint="Between ₹ 50,000 - ₹ 50 Lakh"
+                android:hint="Between ₹5 Lakh - ₹5 Crores"
                 android:inputType="number"
                 android:padding="10dp" />
 

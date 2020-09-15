@@ -138,7 +138,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="16dp"
                 android:background="@drawable/white_back_round"
-                android:hint="Loan Amount"
+                android:hint="Between ₹3 Lakh - ₹5 Crores"
                 android:inputType="number"
                 android:padding="10dp" />
 

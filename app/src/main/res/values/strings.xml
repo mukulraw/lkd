@@ -59,6 +59,7 @@
         <item>Select</item>
         <item>No Registration</item>
         <item>VAT</item>
+        <item>GST</item>
         <item>COI</item>
         <item>Shop Act</item>
         <item>Food License</item>
@@ -90,13 +91,19 @@
     <string-array name="salary_mode">
         <item>Select Salary Mode</item>
         <item>In Account</item>
-        <item>In hand</item>
-        <item>By cheque</item>
+        <item>In Hand</item>
+        <item>By Cheque</item>
     </string-array>
 
     <string-array name="salary_mode2">
         <item>Select Salary Mode</item>
         <item>In Account</item>
+    </string-array>
+
+    <string-array name="salary_mode3">
+        <item>Select Salary Mode</item>
+        <item>By Cheque</item>
+        <item>By Cash</item>
     </string-array>
 
 

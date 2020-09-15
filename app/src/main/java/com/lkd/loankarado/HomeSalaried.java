@@ -291,7 +291,7 @@ public class HomeSalaried extends AppCompatActivity {
         @Nullable
         @Override
         public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-            View view = inflater.inflate(R.layout.activity_professional, container, false);
+            View view = inflater.inflate(R.layout.activity_professional1, container, false);
 
             pan = view.findViewById(R.id.pan);
             city = view.findViewById(R.id.city);
