@@ -92,7 +92,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
         if (image.length() > 0) {
             ImageLoader loader = ImageLoader.getInstance();
-            loader.loadImage("https://mrtecks.com/grocery/admin/upload/nimage/" + image, new ImageLoadingListener() {
+            loader.loadImage("http://ec2-15-206-41-150.ap-south-1.compute.amazonaws.com/admin/upload/nimage/" + image, new ImageLoadingListener() {
                 @Override
                 public void onLoadingStarted(String imageUri, View view) {
 
