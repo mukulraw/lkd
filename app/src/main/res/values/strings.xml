@@ -102,6 +102,7 @@
 
     <string-array name="salary_mode3">
         <item>Select Salary Mode</item>
+        <item>In Account</item>
         <item>By Cheque</item>
         <item>By Cash</item>
     </string-array>
