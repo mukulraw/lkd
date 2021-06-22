@@ -174,7 +174,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     app:avp_autoScroll="true"
-                    app:avp_duration="2000"
+                    app:avp_duration="5000"
                     app:avp_indeterminate="true" />
 
             </androidx.cardview.widget.CardView>

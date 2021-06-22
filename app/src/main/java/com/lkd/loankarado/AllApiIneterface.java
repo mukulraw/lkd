@@ -222,6 +222,9 @@ public interface AllApiIneterface {
     @GET("api/getGallery.php")
     Call<bannerBean> getGallery();
 
+    @GET("api/getPropertyImages.php")
+    Call<bannerBean> getPropertyImages();
+
     @GET("api/getVideos.php")
     Call<videoBean> getVideos();
 

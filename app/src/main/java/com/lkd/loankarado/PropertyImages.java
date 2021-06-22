@@ -1,24 +1,24 @@
 package com.lkd.loankarado;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
-import com.lkd.loankarado.loanPOJO.Datum;
-import com.lkd.loankarado.loanPOJO.loanBean;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
@@ -30,33 +30,34 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
 
-public class Applications extends Fragment {
+public class PropertyImages extends Fragment {
 
-    RecyclerView grid;
+    RecyclerView galleryView;
+    static MainActivity mainActivity;
     ProgressBar progress;
     GalleryAdapter adapter;
-    static MainActivity mainActivity;
-    GridLayoutManager manager;
-    List<Datum> list;
+    StaggeredGridLayoutManager manager;
+    ArrayList<String> list;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.applications, container, false);
+        View view = inflater.inflate(R.layout.gallery, container, false);
         mainActivity = (MainActivity) getActivity();
 
         list = new ArrayList<>();
-        grid = view.findViewById(R.id.grid);
-        progress = view.findViewById(R.id.progressBar3);
+
+        galleryView = view.findViewById(R.id.grid);
+        progress = view.findViewById(R.id.progressBar2);
+
+
+        adapter = new GalleryAdapter(mainActivity, list);
+        manager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+
+        galleryView.setAdapter(adapter);
+        galleryView.setLayoutManager(manager);
 
         progress.setVisibility(View.VISIBLE);
-
-        adapter = new GalleryAdapter(mainActivity , list);
-        manager = new GridLayoutManager(mainActivity , 1);
-
-        grid.setAdapter(adapter);
-        grid.setLayoutManager(manager);
-
 
         Bean b = (Bean) mainActivity.getApplicationContext();
 
@@ -75,18 +76,18 @@ public class Applications extends Fragment {
 
         AllApiIneterface cr = retrofit.create(AllApiIneterface.class);
 
-        Call<loanBean> call = cr.getMyLoan(SharePreferenceUtils.getInstance().getString("userId"));
+        Call<bannerBean> call = cr.getPropertyImages();
 
-        call.enqueue(new Callback<loanBean>() {
+        call.enqueue(new Callback<bannerBean>() {
             @Override
-            public void onResponse(Call<loanBean> call, Response<loanBean> response) {
+            public void onResponse(Call<bannerBean> call, Response<bannerBean> response) {
 
                 adapter.setData(response.body().getData());
                 progress.setVisibility(View.GONE);
             }
 
             @Override
-            public void onFailure(Call<loanBean> call, Throwable t) {
+            public void onFailure(Call<bannerBean> call, Throwable t) {
                 progress.setVisibility(View.GONE);
             }
         });
@@ -96,14 +97,14 @@ public class Applications extends Fragment {
 
     class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.ViewHolder> {
         Context context;
-        List<Datum> list = new ArrayList<>();
+        ArrayList<String> list = new ArrayList<>();
 
-        public GalleryAdapter(Context context, List<Datum> list) {
+        public GalleryAdapter(Context context, ArrayList<String> list) {
             this.context = context;
             this.list = list;
         }
 
-        public void setData(List<Datum> list) {
+        public void setData(ArrayList<String> list) {
             this.list = list;
             notifyDataSetChanged();
         }
@@ -112,7 +113,7 @@ public class Applications extends Fragment {
         @Override
         public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            View view = inflater.inflate(R.layout.loan_list_item, parent, false);
+            View view = inflater.inflate(R.layout.gallery_list_item, parent, false);
             return new ViewHolder(view);
         }
 
@@ -120,13 +121,28 @@ public class Applications extends Fragment {
         public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
             holder.setIsRecyclable(false);
-            Datum item = list.get(position);
+            final String item = list.get(position);
 
-            holder.loanid.setText("LOAN NO. #" + item.getTime());
-            holder.type.setText(item.getLoanType());
-            holder.amount.setText("Loan Amount: ₹" + item.getAmount());
-            holder.status.setText("Current Status: " + item.getStatus());
-            holder.date.setText(item.getCreated());
+            final DisplayImageOptions options = new DisplayImageOptions.Builder().cacheInMemory(true).cacheOnDisk(true).resetViewBeforeLoading(false).build();
+            final ImageLoader loader = ImageLoader.getInstance();
+            loader.displayImage(item, holder.image, options);
+
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    Dialog dialog = new Dialog(context, android.R.style.Theme_Black_NoTitleBar_Fullscreen);
+                    //dialog.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT,
+                    //      WindowManager.LayoutParams.MATCH_PARENT);
+                    dialog.setContentView(R.layout.zoom_dialog);
+                    dialog.setCancelable(true);
+                    dialog.show();
+
+                    ImageView img = dialog.findViewById(R.id.image);
+                    loader.displayImage(item, img, options);
+
+                }
+            });
 
 
         }
@@ -137,15 +153,11 @@ public class Applications extends Fragment {
         }
 
         class ViewHolder extends RecyclerView.ViewHolder {
-            TextView type, amount, status, date, loanid;
+            ImageView image;
 
             public ViewHolder(@NonNull View itemView) {
                 super(itemView);
-                type = itemView.findViewById(R.id.textView8);
-                amount = itemView.findViewById(R.id.textView9);
-                status = itemView.findViewById(R.id.textView10);
-                date = itemView.findViewById(R.id.textView11);
-                loanid = itemView.findViewById(R.id.textView18);
+                image = itemView.findViewById(R.id.image);
             }
         }
     }

@@ -73,6 +73,7 @@
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
             android:backgroundTint="#ffffff"
+            android:visibility="gone"
             android:src="@drawable/ic_conversation"
             app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
             app:layout_constraintEnd_toEndOf="parent" />

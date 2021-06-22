@@ -19,6 +19,9 @@ public class Datum {
     @SerializedName("created")
     @Expose
     private String created;
+    @SerializedName("time")
+    @Expose
+    private String time;
 
     public String getId() {
         return id;
@@ -58,6 +61,14 @@ public class Datum {
 
     public void setCreated(String created) {
         this.created = created;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
     }
 
 }

@@ -230,7 +230,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="16dp"
                 android:background="@drawable/white_back_round"
-                android:hint="Between ₹ 50,000 - ₹ 50 Lakh"
+                android:hint="Between ₹ 10,000 - ₹ 1 Crore"
                 android:inputType="number"
                 android:padding="10dp" />
 
@@ -266,7 +266,7 @@
                 android:minHeight="0dp"
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp"
-                android:text="CONTINUE"
+                android:text="SUBMIT"
                 android:textColor="#ffffff" />
 
 

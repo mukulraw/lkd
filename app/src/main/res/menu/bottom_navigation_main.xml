@@ -28,7 +28,7 @@
     <item
         android:id="@+id/action_contact"
         android:enabled="true"
-        android:icon="@drawable/ic_contact_us"
+        android:icon="@drawable/ic_iconfinder_2559769_media_network_social_whatsapp_icon"
         android:title="Contact"
         app:showAsAction="always" />
 </menu>

@@ -100,6 +100,8 @@
             android:text="Gallery" />
 
 
+
+
         <TextView
             android:id="@+id/videos"
             android:layout_width="match_parent"
@@ -109,6 +111,33 @@
             android:textColor="#000000"
             android:padding="15dp"
             android:text="Videos"
+            android:textSize="16sp"
+            android:visibility="visible" />
+
+        <TextView
+            android:id="@+id/property"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_gallery"
+            android:drawablePadding="22dp"
+            android:textColor="#000000"
+            android:padding="15dp"
+            android:textSize="16sp"
+            android:text="Property Images" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#cdcdcd" />
+
+        <TextView
+            android:id="@+id/payout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_iconfinder_7122446_rupee_currency_icon"
+            android:drawablePadding="22dp"
+            android:textColor="#000000"
+            android:padding="15dp"
+            android:text="Payout Structure"
             android:textSize="16sp"
             android:visibility="visible" />
 

@@ -21,6 +21,7 @@ import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -48,7 +49,7 @@ import retrofit2.converter.scalars.ScalarsConverterFactory;
 public class Business extends AppCompatActivity {
 
     Toolbar toolbar;
-    static ViewPager pager;
+    static NonSwipeableViewPager pager;
     TabLayout tabs;
 
 
@@ -78,7 +79,15 @@ public class Business extends AppCompatActivity {
         PagerAdapter adapter = new PagerAdapter(getSupportFragmentManager(), FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
         pager.setAdapter(adapter);
         tabs.setupWithViewPager(pager);
-
+        LinearLayout tabStrip = ((LinearLayout)tabs.getChildAt(0));
+        for(int i = 0; i < tabStrip.getChildCount(); i++) {
+            tabStrip.getChildAt(i).setOnTouchListener(new View.OnTouchListener() {
+                @Override
+                public boolean onTouch(View v, MotionEvent event) {
+                    return true;
+                }
+            });
+        }
     }
 
     static class PagerAdapter extends FragmentStatePagerAdapter {

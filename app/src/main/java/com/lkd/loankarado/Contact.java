@@ -21,7 +21,7 @@ public class Contact extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.contact, container, false);
 
-        whatsapp = view.findViewById(R.id.textView7);
+        whatsapp = view.findViewById(R.id.textView17);
 
         whatsapp.setOnClickListener(new View.OnClickListener() {
             @Override

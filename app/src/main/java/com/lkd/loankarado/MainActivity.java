@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
     Toolbar toolbar;
     DrawerLayout drawer;
     BottomNavigationView navigation;
-    TextView home, login, applications, gallery, videos, logout, contact;
+    TextView home, login, applications, gallery, videos, logout, contact, property;
     FloatingActionButton chat;
 
     @Override
@@ -53,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
         videos = findViewById(R.id.videos);
         contact = findViewById(R.id.contact);
         chat = findViewById(R.id.textView15);
+        property = findViewById(R.id.property);
 
         setSupportActionBar(toolbar);
 
@@ -183,6 +184,19 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 navigation.setSelectedItemId(R.id.action_gallery);
+                drawer.closeDrawer(GravityCompat.START);
+            }
+        });
+
+        property.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragmentManager fm2 = getSupportFragmentManager();
+                FragmentTransaction ft2 = fm2.beginTransaction();
+                PropertyImages frag12 = new PropertyImages();
+                ft2.replace(R.id.replace, frag12);
+                ft2.addToBackStack(null);
+                ft2.commit();
                 drawer.closeDrawer(GravityCompat.START);
             }
         });
