@@ -16,7 +16,8 @@ public interface AllApiIneterface {
     Call<loginBean> login(
             @Part("phone") String phone,
             @Part("token") String token,
-            @Part("referrer") String referrer
+            @Part("referrer") String referrer,
+            @Part("name") String name
     );
 
     @Multipart

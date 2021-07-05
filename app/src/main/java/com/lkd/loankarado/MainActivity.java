@@ -12,6 +12,7 @@ import androidx.fragment.app.FragmentTransaction;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.MotionEvent;
@@ -86,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
                         //ft.addToBackStack(null);
                         ft.commit();
                         drawer.closeDrawer(GravityCompat.START);
-
+                        return true;
                         break;
                     case R.id.action_applications:
                         FragmentManager fm1 = getSupportFragmentManager();
@@ -101,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
                         //ft.addToBackStack(null);
                         ft1.commit();
                         drawer.closeDrawer(GravityCompat.START);
-
+                        return true;
                         break;
                     case R.id.action_gallery:
                         FragmentManager fm2 = getSupportFragmentManager();
@@ -116,6 +117,7 @@ public class MainActivity extends AppCompatActivity {
                         //ft.addToBackStack(null);
                         ft2.commit();
                         drawer.closeDrawer(GravityCompat.START);
+                        return true;
                         break;
                     case R.id.action_videos:
                         FragmentManager fm3 = getSupportFragmentManager();
@@ -130,9 +132,20 @@ public class MainActivity extends AppCompatActivity {
                         //ft.addToBackStack(null);
                         ft3.commit();
                         drawer.closeDrawer(GravityCompat.START);
+                        return true;
                         break;
                     case R.id.action_contact:
-                        FragmentManager fm4 = getSupportFragmentManager();
+
+                        Intent intent = new Intent(Intent.ACTION_VIEW,
+                                Uri.parse(
+                                        String.format("https://api.whatsapp.com/send?phone=%s&text=%s", "+91 81309 03409", "")
+                                )
+                        );
+
+                        startActivity(intent);
+                        return false;
+
+                        /*FragmentManager fm4 = getSupportFragmentManager();
 
                         for (int i = 0; i < fm4.getBackStackEntryCount(); ++i) {
                             fm4.popBackStack();
@@ -143,10 +156,11 @@ public class MainActivity extends AppCompatActivity {
                         ft4.replace(R.id.replace, frag14);
                         //ft.addToBackStack(null);
                         ft4.commit();
-                        drawer.closeDrawer(GravityCompat.START);
+                        drawer.closeDrawer(GravityCompat.START);*/
                         break;
+                    case default:
+                        return false;
                 }
-                return true;
             }
         });
 
@@ -212,8 +226,15 @@ public class MainActivity extends AppCompatActivity {
         contact.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                navigation.setSelectedItemId(R.id.action_contact);
+
+                FragmentManager fm4 = getSupportFragmentManager();
+                FragmentTransaction ft4 = fm4.beginTransaction();
+                Contact frag14 = new Contact();
+                ft4.replace(R.id.replace, frag14);
+                ft4.addToBackStack(null);
+                ft4.commit();
                 drawer.closeDrawer(GravityCompat.START);
+
             }
         });
 
@@ -223,7 +244,7 @@ public class MainActivity extends AppCompatActivity {
         final String uid = SharePreferenceUtils.getInstance().getString("userId");
 
         if (uid.length() > 0) {
-            login.setText(SharePreferenceUtils.getInstance().getString("phone"));
+            login.setText(SharePreferenceUtils.getInstance().getString("name"));
 
         }
 

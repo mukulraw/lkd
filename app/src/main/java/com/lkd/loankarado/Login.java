@@ -26,7 +26,7 @@ import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 public class Login extends AppCompatActivity {
 
-    EditText phone;
+    EditText phone, name;
     Button login;
     ProgressBar progress;
     ImageButton back;
@@ -37,7 +37,8 @@ public class Login extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
 
-        phone = findViewById(R.id.editText);
+        phone = findViewById(R.id.editTextTextPersonName);
+        name = findViewById(R.id.editText);
         login = findViewById(R.id.button);
         progress = findViewById(R.id.progressBar);
         back = findViewById(R.id.imageButton);
@@ -55,62 +56,72 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                String n = name.getText().toString();
                 String p = phone.getText().toString();
 
-                if (p.length() == 10) {
+                if (n.length() > 0)
+                {
+                    if (p.length() == 10) {
 
-                    progress.setVisibility(View.VISIBLE);
+                        progress.setVisibility(View.VISIBLE);
 
-                    Bean b = (Bean) getApplicationContext();
+                        Bean b = (Bean) getApplicationContext();
 
-                    HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
-                    logging.level(HttpLoggingInterceptor.Level.HEADERS);
-                    logging.level(HttpLoggingInterceptor.Level.BODY);
+                        HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
+                        logging.level(HttpLoggingInterceptor.Level.HEADERS);
+                        logging.level(HttpLoggingInterceptor.Level.BODY);
 
-                    OkHttpClient client = new OkHttpClient.Builder().writeTimeout(1000, TimeUnit.SECONDS).readTimeout(1000, TimeUnit.SECONDS).connectTimeout(1000, TimeUnit.SECONDS).addInterceptor(logging).build();
+                        OkHttpClient client = new OkHttpClient.Builder().writeTimeout(1000, TimeUnit.SECONDS).readTimeout(1000, TimeUnit.SECONDS).connectTimeout(1000, TimeUnit.SECONDS).addInterceptor(logging).build();
 
-                    Retrofit retrofit = new Retrofit.Builder()
-                            .baseUrl(b.baseurl)
-                            .client(client)
-                            .addConverterFactory(ScalarsConverterFactory.create())
-                            .addConverterFactory(GsonConverterFactory.create())
-                            .build();
+                        Retrofit retrofit = new Retrofit.Builder()
+                                .baseUrl(b.baseurl)
+                                .client(client)
+                                .addConverterFactory(ScalarsConverterFactory.create())
+                                .addConverterFactory(GsonConverterFactory.create())
+                                .build();
 
-                    AllApiIneterface cr = retrofit.create(AllApiIneterface.class);
+                        AllApiIneterface cr = retrofit.create(AllApiIneterface.class);
 
-                    Call<loginBean> call = cr.login(p, SharePreferenceUtils.getInstance().getString("token"), SharePreferenceUtils.getInstance().getString("referrer"));
+                        Call<loginBean> call = cr.login(p, SharePreferenceUtils.getInstance().getString("token"), SharePreferenceUtils.getInstance().getString("referrer"), n);
 
-                    call.enqueue(new Callback<loginBean>() {
-                        @Override
-                        public void onResponse(@NotNull Call<loginBean> call, @NotNull Response<loginBean> response) {
+                        call.enqueue(new Callback<loginBean>() {
+                            @Override
+                            public void onResponse(@NotNull Call<loginBean> call, @NotNull Response<loginBean> response) {
 
-                            assert response.body() != null;
-                            if (response.body().getStatus().equals("1")) {
-                                //SharePreferenceUtils.getInstance().saveString("userId" , response.body().getUserId());
-                                SharePreferenceUtils.getInstance().saveString("phone", response.body().getPhone());
-                                Toast.makeText(Login.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                                assert response.body() != null;
+                                if (response.body().getStatus().equals("1")) {
+                                    //SharePreferenceUtils.getInstance().saveString("userId" , response.body().getUserId());
+                                    SharePreferenceUtils.getInstance().saveString("phone", response.body().getPhone());
+                                    Toast.makeText(Login.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
 
-                                Intent intent = new Intent(Login.this, OTP.class);
-                                startActivity(intent);
-                                finishAffinity();
+                                    Intent intent = new Intent(Login.this, OTP.class);
+                                    startActivity(intent);
+                                    finishAffinity();
 
-                            } else {
-                                Toast.makeText(Login.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                                } else {
+                                    Toast.makeText(Login.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                                }
+
+                                progress.setVisibility(View.GONE);
+
                             }
 
-                            progress.setVisibility(View.GONE);
+                            @Override
+                            public void onFailure(@NotNull Call<loginBean> call, @NotNull Throwable t) {
+                                progress.setVisibility(View.GONE);
+                            }
+                        });
 
-                        }
-
-                        @Override
-                        public void onFailure(@NotNull Call<loginBean> call, @NotNull Throwable t) {
-                            progress.setVisibility(View.GONE);
-                        }
-                    });
-
-                } else {
-                    Toast.makeText(Login.this, "Please enter a valid Phone Number", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(Login.this, "Please enter a valid Phone Number", Toast.LENGTH_SHORT).show();
+                    }
                 }
+                else
+                {
+                    Toast.makeText(Login.this, "Invalid name", Toast.LENGTH_SHORT).show();
+                }
+
+
 
             }
         });
