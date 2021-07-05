@@ -80,7 +80,7 @@ public class OTP extends AppCompatActivity {
                                 SharePreferenceUtils.getInstance().saveString("userId" , response.body().getUserId());
                                 SharePreferenceUtils.getInstance().saveString("phone" , response.body().getPhone());
                                 SharePreferenceUtils.getInstance().saveString("rewards" , response.body().getRewards());
-                                SharePreferenceUtils.getInstance().saveString("name" , response.body().getName());
+                                SharePreferenceUtils.getInstance().saveString("name1" , response.body().getName());
                                 Toast.makeText(OTP.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
 
                                 Intent intent = new Intent(OTP.this , MainActivity.class);

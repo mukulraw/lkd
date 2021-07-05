@@ -278,7 +278,7 @@ public class MainActivity extends AppCompatActivity {
         final String uid = SharePreferenceUtils.getInstance().getString("userId");
 
         if (uid.length() > 0) {
-            login.setText(SharePreferenceUtils.getInstance().getString("name"));
+            login.setText(SharePreferenceUtils.getInstance().getString("name1"));
 
         }
 
