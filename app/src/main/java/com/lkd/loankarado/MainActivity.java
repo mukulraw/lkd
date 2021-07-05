@@ -2,6 +2,7 @@ package com.lkd.loankarado;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
@@ -10,6 +11,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
@@ -18,6 +20,7 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -37,6 +40,8 @@ public class MainActivity extends AppCompatActivity {
     TextView home, login, applications, gallery, videos, logout, contact, property;
     FloatingActionButton chat;
 
+    ImageView notification, share;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,6 +60,8 @@ public class MainActivity extends AppCompatActivity {
         contact = findViewById(R.id.contact);
         chat = findViewById(R.id.textView15);
         property = findViewById(R.id.property);
+        notification = findViewById(R.id.imageView7);
+        share = findViewById(R.id.imageView8);
 
         setSupportActionBar(toolbar);
 
@@ -88,7 +95,6 @@ public class MainActivity extends AppCompatActivity {
                         ft.commit();
                         drawer.closeDrawer(GravityCompat.START);
                         return true;
-                        break;
                     case R.id.action_applications:
                         FragmentManager fm1 = getSupportFragmentManager();
 
@@ -103,7 +109,6 @@ public class MainActivity extends AppCompatActivity {
                         ft1.commit();
                         drawer.closeDrawer(GravityCompat.START);
                         return true;
-                        break;
                     case R.id.action_gallery:
                         FragmentManager fm2 = getSupportFragmentManager();
 
@@ -118,7 +123,6 @@ public class MainActivity extends AppCompatActivity {
                         ft2.commit();
                         drawer.closeDrawer(GravityCompat.START);
                         return true;
-                        break;
                     case R.id.action_videos:
                         FragmentManager fm3 = getSupportFragmentManager();
 
@@ -133,7 +137,6 @@ public class MainActivity extends AppCompatActivity {
                         ft3.commit();
                         drawer.closeDrawer(GravityCompat.START);
                         return true;
-                        break;
                     case R.id.action_contact:
 
                         Intent intent = new Intent(Intent.ACTION_VIEW,
@@ -157,8 +160,7 @@ public class MainActivity extends AppCompatActivity {
                         //ft.addToBackStack(null);
                         ft4.commit();
                         drawer.closeDrawer(GravityCompat.START);*/
-                        break;
-                    case default:
+                    default:
                         return false;
                 }
             }
@@ -238,6 +240,27 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        share.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent sendIntent = new Intent();
+                sendIntent.setAction(Intent.ACTION_SEND);
+                sendIntent.putExtra(Intent.EXTRA_TEXT,
+                        "Download LoanKaraDo: https://play.google.com/store/apps/details?id=" + BuildConfig.APPLICATION_ID);
+                sendIntent.setType("text/plain");
+                startActivity(sendIntent);
+
+            }
+        });
+
+        notification.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, Notifications.class);
+                startActivity(intent);
+            }
+        });
 
         navigation.setSelectedItemId(R.id.action_home);
 
@@ -269,6 +292,51 @@ public class MainActivity extends AppCompatActivity {
             Objects.requireNonNull(imm).hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
         }
         return super.dispatchTouchEvent(ev);
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        FragmentManager fm3 = getSupportFragmentManager();
+        if (fm3.getBackStackEntryCount() == 0)
+        {
+
+            new AlertDialog.Builder(MainActivity.this)
+                    .setTitle(getString(R.string.confirm))
+                    .setMessage(getString(R.string.close_app_text))
+
+                    // Specifying a listener allows you to take an action before dismissing the dialog.
+                    // The dialog is automatically dismissed when a dialog button is clicked.
+                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+
+                            dialog.dismiss();
+                            finishAffinity();
+
+                        }
+                    })
+
+                    // A null listener allows the button to dismiss the dialog and take no further action.
+                    .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+
+                            dialog.dismiss();
+
+                        }
+                    })
+                    .show();
+
+
+        }
+        else
+        {
+            super.onBackPressed();
+        }
+
+
+
+
     }
 
 }

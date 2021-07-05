@@ -1,6 +1,7 @@
 package com.lkd.loankarado;
 
 import com.lkd.loankarado.loanPOJO.loanBean;
+import com.lkd.loankarado.notiPOJO.notiBeam;
 import com.lkd.loankarado.videoPOJO.videoBean;
 
 import retrofit2.Call;
@@ -27,6 +28,11 @@ public interface AllApiIneterface {
             @Part("otp") String otp
     );
 
+    @Multipart
+    @POST("api/getNotification.php")
+    Call<notiBeam> getNotification(
+            @Part("user_id") String user_id
+    );
 
     @Multipart
     @POST("api/apply_personal.php")

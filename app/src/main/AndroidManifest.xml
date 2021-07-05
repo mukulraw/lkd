@@ -5,7 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name="com.lkd.loankarado.Bean"
+        android:name=".Bean"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -13,32 +13,33 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <activity android:name=".Notifications"></activity>
         <activity
-            android:name="com.lkd.loankarado.OTP"
+            android:name=".OTP"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.lkd.loankarado.Login"
+            android:name=".Login"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.lkd.loankarado.PropertySelf"
+            android:name=".PropertySelf"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.lkd.loankarado.HomeSelf"
+            android:name=".HomeSelf"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.lkd.loankarado.PropertySalaried"
+            android:name=".PropertySalaried"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.lkd.loankarado.HomeSalaried"
+            android:name=".HomeSalaried"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.lkd.loankarado.Business"
+            android:name=".Business"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.lkd.loankarado.Personal"
+            android:name=".Personal"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.lkd.loankarado.Splash"
+            android:name=".Splash"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -47,7 +48,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.lkd.loankarado.MainActivity"
+            android:name=".MainActivity"
             android:screenOrientation="portrait" />
 
         <service
@@ -71,7 +72,6 @@
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_channel_id"
             android:value="@string/default_notification_channel_id" />
-
     </application>
 
 </manifest>
