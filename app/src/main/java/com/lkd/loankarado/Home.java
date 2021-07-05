@@ -142,9 +142,16 @@ public class Home extends Fragment {
             @Override
             public void onResponse(Call<bannerBean> call, Response<bannerBean> response) {
 
-                PagerAdapter adapter = new PagerAdapter(getChildFragmentManager(), FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT, response.body().getData());
-                banner.setAdapter(adapter);
-                indicator.setViewPager(banner);
+                try {
+                    PagerAdapter adapter = new PagerAdapter(getChildFragmentManager(), FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT, response.body().getData());
+                    banner.setAdapter(adapter);
+                    indicator.setViewPager(banner);
+                }
+                catch (Exception e)
+                {
+                    e.printStackTrace();
+                }
+
 
 
             }

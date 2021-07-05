@@ -2,6 +2,7 @@ package com.lkd.loankarado;
 
 import com.lkd.loankarado.loanPOJO.loanBean;
 import com.lkd.loankarado.notiPOJO.notiBeam;
+import com.lkd.loankarado.payoutPOJO.payoutBean;
 import com.lkd.loankarado.videoPOJO.videoBean;
 
 import retrofit2.Call;
@@ -33,6 +34,9 @@ public interface AllApiIneterface {
     Call<notiBeam> getNotification(
             @Part("user_id") String user_id
     );
+
+    @GET("api/getPayout.php")
+    Call<payoutBean> getPayout();
 
     @Multipart
     @POST("api/apply_personal.php")

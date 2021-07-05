@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
     Toolbar toolbar;
     DrawerLayout drawer;
     BottomNavigationView navigation;
-    TextView home, login, applications, gallery, videos, logout, contact, property;
+    TextView home, login, applications, gallery, videos, logout, contact, property, payout;
     FloatingActionButton chat;
 
     ImageView notification, share;
@@ -62,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
         property = findViewById(R.id.property);
         notification = findViewById(R.id.imageView7);
         share = findViewById(R.id.imageView8);
+        payout = findViewById(R.id.payout);
 
         setSupportActionBar(toolbar);
 
@@ -261,6 +262,16 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        payout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, Payout.class);
+                startActivity(intent);
+                drawer.closeDrawer(GravityCompat.START);
+            }
+        });
+
 
         navigation.setSelectedItemId(R.id.action_home);
 
