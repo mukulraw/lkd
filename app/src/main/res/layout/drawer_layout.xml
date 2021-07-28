@@ -83,6 +83,18 @@
             android:text="Applications" />
 
         <TextView
+            android:id="@+id/banks"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_iconfinder_7122446_rupee_currency_icon"
+            android:drawablePadding="22dp"
+            android:textColor="#000000"
+            android:padding="15dp"
+            android:textSize="16sp"
+            android:text="Bank's Options" />
+
+
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="#cdcdcd" />

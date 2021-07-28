@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/shade"
-    tools:context=".Payout">
+    tools:context=".Banks">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar3"
@@ -33,7 +33,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="4"
-            android:text="Loan"
+            android:text="Bank Name"
             android:textColor="@color/black"
             android:textStyle="bold"
             android:padding="8dp"
@@ -49,7 +49,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="3"
-            android:text="Amount"
+            android:text="R.O.I."
             android:textColor="@color/black"
             android:textStyle="bold"
             android:padding="8dp"
@@ -64,7 +64,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="3"
-            android:text="Payout"
+            android:text="Processing Fees"
             android:textColor="@color/black"
             android:textStyle="bold"
             android:padding="8dp"

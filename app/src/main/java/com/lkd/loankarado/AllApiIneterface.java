@@ -38,6 +38,9 @@ public interface AllApiIneterface {
     @GET("api/getPayout.php")
     Call<payoutBean> getPayout();
 
+    @GET("api/getBanks.php")
+    Call<payoutBean> getBanks();
+
     @Multipart
     @POST("api/apply_personal.php")
     Call<applyBean> apply_personal(

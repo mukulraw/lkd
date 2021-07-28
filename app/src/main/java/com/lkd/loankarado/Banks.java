@@ -6,22 +6,17 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.lkd.loankarado.payoutPOJO.Data;
 import com.lkd.loankarado.payoutPOJO.Datum;
 import com.lkd.loankarado.payoutPOJO.payoutBean;
-import com.nostra13.universalimageloader.core.DisplayImageOptions;
-import com.nostra13.universalimageloader.core.ImageLoader;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,7 +29,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
 
-public class Payout extends AppCompatActivity {
+public class Banks extends AppCompatActivity {
 
     private Toolbar toolbar;
     ProgressBar progress;
@@ -47,7 +42,7 @@ public class Payout extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_payout);
+        setContentView(R.layout.activity_banks);
 
         list = new ArrayList<>();
 
@@ -69,7 +64,7 @@ public class Payout extends AppCompatActivity {
         });
 
         toolbar.setTitleTextColor(Color.WHITE);
-        toolbar.setTitle("Payout Structure");
+        toolbar.setTitle("Bank's Options");
 
         adapter = new GalleryAdapter(this, list);
         manager = new GridLayoutManager(this, 1);
@@ -89,7 +84,7 @@ public class Payout extends AppCompatActivity {
 
         AllApiIneterface cr = retrofit.create(AllApiIneterface.class);
 
-        Call<payoutBean> call = cr.getPayout();
+        Call<payoutBean> call = cr.getBanks();
 
         call.enqueue(new Callback<payoutBean>() {
             @Override
@@ -141,7 +136,7 @@ public class Payout extends AppCompatActivity {
             final Datum item = list.get(position);
 
             holder.loan.setText(item.getLoan());
-            holder.amount.setText("₹" + item.getAmount());
+            holder.amount.setText(item.getAmount());
             holder.payout.setText("₹" + item.getPayout());
 
         }
