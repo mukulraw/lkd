@@ -9,6 +9,7 @@ import android.util.Log;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.messaging.FirebaseMessaging;
 
 import java.util.Timer;
@@ -24,6 +25,8 @@ public class Splash extends AppCompatActivity {
         setContentView(R.layout.activity_splash);
 
         t = new Timer();
+
+        FirebaseApp.initializeApp(this);
 
         FirebaseMessaging.getInstance().subscribeToTopic("lkd").addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override

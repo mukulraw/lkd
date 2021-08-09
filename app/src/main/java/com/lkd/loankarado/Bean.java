@@ -3,6 +3,7 @@ package com.lkd.loankarado;
 import android.app.Application;
 import android.content.Context;
 
+import com.google.firebase.FirebaseApp;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
@@ -21,6 +22,8 @@ public class Bean extends Application {
         super.onCreate();
 
         context = getApplicationContext();
+
+
 
         ImageLoader.getInstance().init(ImageLoaderConfiguration.createDefault(this));
 
